@@ -1,4 +1,4 @@
-package com.example.oop2;
+package com.example.oop2.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
