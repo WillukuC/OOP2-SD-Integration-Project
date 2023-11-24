@@ -6,21 +6,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="297.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="297.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="97.0" layoutY="14.0" text="Log-In">
+      <Label layoutX="116.0" layoutY="14.0" text="Log in">
          <font>
-            <Font size="36.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="40.0" layoutY="103.0" text="E-mail: " />
-      <Label layoutX="40.0" layoutY="157.0" text="Name: " />
-      <TextField layoutX="106.0" layoutY="99.0" />
-      <TextField layoutX="106.0" layoutY="153.0" />
-      <Button layoutX="205.0" layoutY="260.0" mnemonicParsing="false" text="Log-In" />
-      <Button layoutX="41.0" layoutY="260.0" mnemonicParsing="false" text="Sign-Up" />
-      <Label layoutX="33.0" layoutY="209.0" text="Client Id: " />
-      <TextField layoutX="107.0" layoutY="205.0" />
+      <Label layoutX="41.0" layoutY="66.0" text="Username: " />
+      <Label layoutX="43.0" layoutY="112.0" text="Password: " />
+      <TextField layoutX="107.0" layoutY="62.0" />
+      <TextField layoutX="107.0" layoutY="108.0" />
+      <Button layoutX="125.0" layoutY="151.0" mnemonicParsing="false" text="Log in" />
+      <Button layoutX="119.0" layoutY="225.0" mnemonicParsing="false" text="Sign-Up" />
+      <Label layoutX="118.0" layoutY="208.0" text="Not a user?" />
    </children>
 </AnchorPane>
