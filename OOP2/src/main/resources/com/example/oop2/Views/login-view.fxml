@@ -16,10 +16,10 @@
       </Label>
       <Label layoutX="41.0" layoutY="66.0" text="Username: " />
       <Label layoutX="43.0" layoutY="112.0" text="Password: " />
-      <TextField layoutX="107.0" layoutY="62.0" />
-      <Button layoutX="125.0" layoutY="151.0" mnemonicParsing="false" text="Log in" />
+      <TextField layoutX="107.0" layoutY="62.0" onAction="#onEnter"/>
+      <PasswordField layoutX="108.0" layoutY="108.0" onAction="#onEnter"/>
+      <Button layoutX="125.0" layoutY="151.0" mnemonicParsing="false" onAction="#onEnter" text="Log in" />
       <Button layoutX="119.0" layoutY="225.0" mnemonicParsing="false" text="Sign-Up" />
       <Label layoutX="118.0" layoutY="208.0" text="Not a user?" />
-      <PasswordField layoutX="108.0" layoutY="108.0" />
    </children>
 </AnchorPane>
