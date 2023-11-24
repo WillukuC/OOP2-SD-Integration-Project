@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ChoiceBox layoutX="37.0" layoutY="111.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="229.0" layoutY="111.0" prefWidth="150.0" />
+      <Label layoutX="71.0" layoutY="14.0" text="Showtime Details">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <TextField layoutX="230.0" layoutY="175.0" />
+      <Label layoutX="37.0" layoutY="84.0" text="Select a movie:" />
+      <Label layoutX="230.0" layoutY="84.0" text="Select a room:" />
+      <DatePicker layoutX="37.0" layoutY="175.0" prefHeight="26.0" prefWidth="150.0" />
+      <Label layoutX="37.0" layoutY="149.0" text="Select a date:" />
+      <Label layoutX="229.0" layoutY="149.0" text="Select a time:" />
+      <Button layoutX="132.0" layoutY="219.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="56.0" text="Exit" />
+      <Button layoutX="230.0" layoutY="218.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="56.0" text="Save" />
+   </children>
+</AnchorPane>
