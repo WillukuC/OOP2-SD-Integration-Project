@@ -17,10 +17,12 @@ public class MovieList {
                 br.readLine();
                 String line = br.readLine();
                 while (line != null) {
-                    if (!line.equals("")) {
+                    if (!line.trim().isEmpty()) {
                         String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
                         Movie movie = new Movie(attributes[0], attributes[1]);
                         addMovie(movie);
+                        line = br.readLine();
+                    } else {
                         line = br.readLine();
                     }
                 }

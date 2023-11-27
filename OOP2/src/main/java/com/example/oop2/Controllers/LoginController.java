@@ -14,7 +14,5 @@ public class LoginController {
         for (Movie movie : movieList) {
             System.out.println(movie.getTitle());
         }
-        MovieList.addMovie(new Movie("Dune: Part Two", "Sci-Fi"));
-        MovieList.saveMovieList();
     }
 }
