@@ -1,21 +1,22 @@
 package com.example.oop2.Models;
 
-import javafx.stage.Screen;
-import javafx.util.converter.LocalDateTimeStringConverter;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class for managing the list of showtimes.
+ * Upon initialization, fills the list with data from showtimes.csv
+ */
 public class ShowtimeList {
+    /**
+     * The global showtime list
+     */
     private static final List<Showtime> showtimeList = new ArrayList<>();
 
-    private ShowtimeList(){}
-
+    // Initialization method
     static {
         try {
             // The filepath to the list of showtimes.
@@ -31,7 +32,7 @@ public class ShowtimeList {
                 // Executes if line is not null AND is not empty/whitespace
                 while (line != null) {
                     if (!line.trim().isEmpty()) {
-                        // Splits the line into a showtime's title and genre
+                        // Splits the line into a showtime's id, date, and movie
                         // and adds it to the showtime list.
                         String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
@@ -73,6 +74,12 @@ public class ShowtimeList {
     }
 
     /**
+     * ShowtimeList constructor, empty and private to prevent initialization
+     */
+    private ShowtimeList() {
+    }
+
+    /**
      * Gets the global showtime list
      *
      * @return the global showtime list
@@ -94,13 +101,13 @@ public class ShowtimeList {
     /**
      * Updates a showtime on the global showtime list.
      *
-     * @param index Index of the showtime to be updated
+     * @param index     Index of the showtime to be updated
      * @param pShowtime The showtime with the changes made
      * @return true if the index is within the List's bounds, false if else.
      */
     public static boolean updateShowtime(int index, Showtime pShowtime) {
         // Checks if specified showtime is in the list range.
-        if (index >= 0 && index <= showtimeList.size()-1) {
+        if (index >= 0 && index <= showtimeList.size() - 1) {
             showtimeList.set(index, pShowtime);
             saveShowtimeList();
             return true;

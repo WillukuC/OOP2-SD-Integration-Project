@@ -6,11 +6,17 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class for managing the list of tickets.
+ * Upon initialization, fills the list with data from tickets.csv
+ */
 public class TicketList {
+    /**
+     * The global ticket list
+     */
     private static final List<Ticket> ticketList = new ArrayList<>();
 
-    private TicketList(){}
-
+    // Initialization method
     static {
         try {
             // The filepath to the list of tickets.
@@ -26,7 +32,7 @@ public class TicketList {
                 // Executes if line is not null AND is not empty/whitespace
                 while (line != null) {
                     if (!line.trim().isEmpty()) {
-                        // Splits the line into a ticket's title and genre
+                        // Splits the line into a ticket's id, client, purchase date, and showtime
                         // and adds it to the ticket list.
                         String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
@@ -62,6 +68,12 @@ public class TicketList {
     }
 
     /**
+     * TicketList constructor, empty and private to prevent initialization
+     */
+    private TicketList() {
+    }
+
+    /**
      * Gets the global ticket list
      *
      * @return the global ticket list
@@ -83,13 +95,13 @@ public class TicketList {
     /**
      * Updates a ticket on the global ticket list.
      *
-     * @param index Index of the ticket to be updated
+     * @param index   Index of the ticket to be updated
      * @param pTicket The ticket with the changes made
      * @return true if the index is within the List's bounds, false if else.
      */
     public static boolean updateTicket(int index, Ticket pTicket) {
         // Checks if specified ticket is in the list range.
-        if (index >= 0 && index <= ticketList.size()-1) {
+        if (index >= 0 && index <= ticketList.size() - 1) {
             ticketList.set(index, pTicket);
             saveTicketList();
             return true;

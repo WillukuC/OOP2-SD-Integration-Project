@@ -5,11 +5,17 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class for managing the list of movies.
+ * Upon initialization, fills the list with data from movies.csv
+ */
 public class MovieList {
+    /**
+     * The global movie list
+     */
     private static final List<Movie> movieList = new ArrayList<>();
 
-    private MovieList(){}
-
+    // Initialization method
     static {
         try {
             // The filepath to the list of movies.
@@ -42,6 +48,11 @@ public class MovieList {
     }
 
     /**
+     * MovieList constructor, empty and private to prevent initialization
+     */
+    private MovieList(){}
+
+    /**
      * Gets the global movie list
      *
      * @return the global movie list
@@ -63,13 +74,13 @@ public class MovieList {
     /**
      * Updates a movie on the global movie list.
      *
-     * @param index Index of the movie to be updated
+     * @param index  Index of the movie to be updated
      * @param pMovie The movie with the changes made
      * @return true if the index is within the List's bounds, false if else.
      */
     public static boolean updateMovie(int index, Movie pMovie) {
         // Checks if specified movie is in the list range.
-        if (index >= 0 && index <= movieList.size()-1) {
+        if (index >= 0 && index <= movieList.size() - 1) {
             movieList.set(index, pMovie);
             saveMovieList();
             return true;

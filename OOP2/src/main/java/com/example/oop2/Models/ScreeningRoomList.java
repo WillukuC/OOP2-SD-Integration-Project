@@ -1,17 +1,21 @@
 package com.example.oop2.Models;
 
-import javafx.stage.Screen;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class for managing the list of screening rooms.
+ * Upon initialization, fills the list with data from screeningrooms.csv
+ */
 public class ScreeningRoomList {
+    /**
+     * The global screening room list
+     */
     private static final List<ScreeningRoom> screeningRoomList = new ArrayList<>();
 
-    private ScreeningRoomList(){}
-
+    // Initialization method
     static {
         try {
             // The filepath to the list of screening rooms.
@@ -27,11 +31,11 @@ public class ScreeningRoomList {
                 // Executes if line is not null AND is not empty/whitespace
                 while (line != null) {
                     if (!line.trim().isEmpty()) {
-                        // Splits the line into a screening room's ID and room number.
+                        // Gets the line as the room's number
                         // and adds it to the screening room list.
                         int roomNumber = Integer.parseInt(line);
                         ScreeningRoom screeningRoom = new ScreeningRoom(roomNumber);
-                        addScreeningRoom (screeningRoom);
+                        addScreeningRoom(screeningRoom);
                     }
                     line = br.readLine();
                 }
@@ -41,6 +45,12 @@ public class ScreeningRoomList {
         } catch (Exception e) {
             throw new RuntimeException("Exception occurred in creating ScreeningList instance");
         }
+    }
+
+    /**
+     * ScreeningRoomList constructor, empty and private to prevent initialization
+     */
+    private ScreeningRoomList() {
     }
 
     /**
@@ -65,13 +75,13 @@ public class ScreeningRoomList {
     /**
      * Updates a screening room on the global screening room list.
      *
-     * @param index Index of the screening room to be updated
+     * @param index          Index of the screening room to be updated
      * @param pScreeningRoom The screening room with the changes made
      * @return true if the index is within the List's bounds, false if else.
      */
     public static boolean updateScreeningRoom(int index, ScreeningRoom pScreeningRoom) {
         // Checks if specified screening room is in the list range.
-        if (index >= 0 && index <= screeningRoomList.size()-1) {
+        if (index >= 0 && index <= screeningRoomList.size() - 1) {
             screeningRoomList.set(index, pScreeningRoom);
             saveScreeningRoomList();
             return true;

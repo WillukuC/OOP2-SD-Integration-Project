@@ -6,11 +6,17 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class for managing the list of users.
+ * Upon initialization, fills the list with data from users.csv
+ */
 public class UserList {
+    /**
+     * The global user list
+     */
     private static final List<User> userList = new ArrayList<>();
 
-    private UserList(){}
-
+    // Initialization method
     static {
         try {
             // The filepath to the list of users.
@@ -26,7 +32,7 @@ public class UserList {
                 // Executes if line is not null AND is not empty/whitespace
                 while (line != null) {
                     if (!line.trim().isEmpty()) {
-                        // Splits the line into a user's title and genre
+                        // Splits the line into a user's id, username, email, join date, password and manager status
                         // and adds it to the user list.
                         String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
@@ -62,6 +68,12 @@ public class UserList {
     }
 
     /**
+     * UserList constructor, empty and private to prevent initialization
+     */
+    private UserList() {
+    }
+
+    /**
      * Gets the global user list
      *
      * @return the global user list
@@ -89,7 +101,7 @@ public class UserList {
      */
     public static boolean updateUser(int index, User pUser) {
         // Checks if specified user is in the list range.
-        if (index >= 0 && index <= userList.size()-1) {
+        if (index >= 0 && index <= userList.size() - 1) {
             userList.set(index, pUser);
             saveUserList();
             return true;
