@@ -39,8 +39,7 @@ public class ShowtimeList {
                         int showtimeID = Integer.parseInt(attributes[0]);
 
                         // Get showtime DateTime
-                        LocalDateTime showtimeDateTime = null;
-                        showtimeDateTime = LocalDateTime.parse(attributes[1]);
+                        LocalDateTime showtimeDateTime = LocalDateTime.parse(attributes[1]);
 
                         // Get showtime Movie
                         Movie showtimeMovie = null;

@@ -7,7 +7,9 @@ import java.util.List;
 
 public class LoginController {
     public void onEnter(ActionEvent actionEvent) {
-        List<Showtime> showtimes = ShowtimeList.getShowtimeList();
-        System.out.println(showtimes.get(1).toString());
+        List<User> users = UserList.getUserList();
+        for (User user : users ) {
+            System.out.println(user.toString());
+        }
     }
 }

@@ -68,4 +68,14 @@ public class User {
     public void setIsManager(boolean pIsManager) {
         this.aIsManager = pIsManager;
     }
+
+    public String toString(){
+        return this.aID + "," +
+                this.aUsername + "," +
+                this.aEmail + "," +
+                this.aDateTimeJoined + "," +
+                this.aPassword + "," +
+                this.aIsManager;
+
+    }
 }

@@ -1,5 +1,5 @@
-﻿UserID,Username,Email,DateTimeJoined,Password,IsManager
-1,WCLark,william@clark.net,2023-11-20T18:00,1234,FALSE
-2,CMadore,colin@madore.net,2023-11-20T18:00,1234,FALSE
-3,LPLeblanc,louis.philippe@leblanc.net,2023-11-20T18:00,1234,FALSE
-4,MHarte,matthias@harte.net,2022-11-20T18:00,1234,TRUE
+UserID,Username,Email,DateTimeJoined,Password,IsManager
+1,WCLark,william@clark.net,2023-11-20T18:00,1234,false
+2,CMadore,colin@madore.net,2023-11-20T18:00,1234,false
+3,LPLeblanc,louis.philippe@leblanc.net,2023-11-20T18:00,1234,false
+4,MHarte,matthias@harte.net,2022-11-20T18:00,1234,true
