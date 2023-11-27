@@ -1,0 +1,133 @@
+package com.example.oop2.Models;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserList {
+    private static final List<User> userList = new ArrayList<>();
+
+    private UserList(){}
+
+    static {
+        try {
+            // The filepath to the list of users.
+            String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\users.csv";
+
+            // Tries to read the file at the specified path
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), StandardCharsets.US_ASCII))) {
+                // Gets next line as string,
+                // first readLine skips the file header.
+                br.readLine();
+                String line = br.readLine();
+
+                // Executes if line is not null AND is not empty/whitespace
+                while (line != null) {
+                    if (!line.trim().isEmpty()) {
+                        // Splits the line into a user's title and genre
+                        // and adds it to the user list.
+                        String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+
+                        // Get user ID
+                        int userID = Integer.parseInt(attributes[0]);
+
+                        // Get username
+                        String username = attributes[1];
+
+                        // Get email
+                        String email = attributes[2];
+
+                        // Get DateTime joined
+                        LocalDateTime joinDateTime = LocalDateTime.parse(attributes[3]);
+
+                        // Get Password
+                        String password = attributes[4];
+
+                        // Get isManager
+                        boolean isManager = Boolean.parseBoolean(attributes[5]);
+
+                        User user = new User(userID, username, email, joinDateTime, password, isManager);
+                        addUser(user);
+                    }
+                    line = br.readLine();
+                }
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Exception occurred in creating UserList instance");
+        }
+    }
+
+    /**
+     * Gets the global user list
+     *
+     * @return the global user list
+     */
+    public static List<User> getUserList() {
+        return userList;
+    }
+
+    /**
+     * Adds a user to the global user list.
+     *
+     * @param pUser The user to be added.
+     */
+    public static void addUser(User pUser) {
+        userList.add(pUser);
+        saveUserList();
+    }
+
+    /**
+     * Updates a user on the global user list.
+     *
+     * @param index Index of the user to be updated
+     * @param pUser The user with the changes made
+     * @return true if the index is within the List's bounds, false if else.
+     */
+    public static boolean updateUser(int index, User pUser) {
+        // Checks if specified user is in the list range.
+        if (index >= 0 && index <= userList.size()-1) {
+            userList.set(index, pUser);
+            saveUserList();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Removes a user from the global user list.
+     *
+     * @param pUser The user to be removed
+     */
+    public static void removeUser(User pUser) {
+        userList.remove(pUser);
+        saveUserList();
+    }
+
+    /**
+     * Saves the list of users to users.csv
+     */
+    public static void saveUserList() {
+        try {
+            // The filepath to the list of users.
+            String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\users.csv";
+
+            // Writes over the file completely, adding each user in the list to the file.
+            try (FileWriter fw = new FileWriter(filePath)) {
+                // Writes the file header
+                fw.append("UserID,Username,Email,DateTimeJoined,Password,IsManager").append(System.lineSeparator());
+                for (User user : userList) {
+                    fw.append(user.toString()).append(System.lineSeparator());
+                }
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to save list to file.");
+        }
+    }
+}

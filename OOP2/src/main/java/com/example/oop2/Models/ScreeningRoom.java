@@ -1,17 +1,21 @@
 package com.example.oop2.Models;
 
 public class ScreeningRoom {
-    private int aRandomNumber;
+    private int aRoomNumber;
 
-    public ScreeningRoom(int aRandomNumber) {
-        this.aRandomNumber = aRandomNumber;
+    public ScreeningRoom(int pRoomNumber) {
+        this.setRoomNumber(pRoomNumber);
     }
 
-    public void setRandomNumber(int aRandomNumber) {
-        this.aRandomNumber = aRandomNumber;
+    public void setRoomNumber(int pRoomNumber) {
+        this.aRoomNumber = pRoomNumber;
     }
 
-    public int getRandomNumber() {
-        return aRandomNumber;
+    public int getRoomNumber() {
+        return aRoomNumber;
+    }
+
+    public String toString() {
+        return Integer.toString(aRoomNumber);
     }
 }
