@@ -14,10 +14,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <ListView layoutX="14.0" layoutY="77.0" prefHeight="388.0" prefWidth="200.0" />
-      <Button layoutX="229.0" layoutY="292.0" mnemonicParsing="false" opacity="0.0" text="Update" />
-      <Button layoutX="229.0" layoutY="371.0" mnemonicParsing="false" opacity="0.0" text="Delete" />
-      <Button layoutX="229.0" layoutY="332.0" mnemonicParsing="false" opacity="0.0" text="Add" />
-      <Button layoutX="88.0" layoutY="496.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="55.0" text="Exit" />
+      <ListView layoutX="14.0" layoutY="77.0" prefHeight="388.0" prefWidth="200.0" fx:id="clientListListview"/>
+      <Button layoutX="88.0" layoutY="496.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="55.0" text="Exit"/>
    </children>
 </AnchorPane>
