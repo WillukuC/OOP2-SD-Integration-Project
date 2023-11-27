@@ -1,5 +1,6 @@
 package com.example.oop2;
 
+import com.example.oop2.Models.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

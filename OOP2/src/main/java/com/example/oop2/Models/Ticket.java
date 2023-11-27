@@ -7,30 +7,30 @@ public class Ticket {
     private LocalDateTime aPurchaseDateTime;
     private Showtime aShowtime;
 
-    public Ticket(int aTicketId, LocalDateTime aPurchaseDateTime, Showtime aShowtime) {
-        this.aTicketId = aTicketId;
-        this.aPurchaseDateTime = aPurchaseDateTime;
-        this.aShowtime = aShowtime;
+    public Ticket(int pTicketId, LocalDateTime pPurchaseDateTime, Showtime pShowtime) {
+        this.setTicketId(pTicketId);
+        this.setPurchaseDateTime(pPurchaseDateTime);
+        this.setShowtime(pShowtime);
     }
 
-    public void setTicketId(int aTicketId) {
-        this.aTicketId = aTicketId;
-    }
-
-    public void setPurchaseDateTime(LocalDateTime aPurchaseDateTime) {
-        this.aPurchaseDateTime = aPurchaseDateTime;
-    }
-
-    public void setShowtime(Showtime aShowtime) {
-        this.aShowtime = aShowtime;
+    public void setTicketId(int pTicketId) {
+        this.aTicketId = pTicketId;
     }
 
     public int getTicketId() {
         return aTicketId;
     }
 
+    public void setPurchaseDateTime(LocalDateTime pPurchaseDateTime) {
+        this.aPurchaseDateTime = pPurchaseDateTime;
+    }
+
     public LocalDateTime getPurchaseDateTime() {
         return aPurchaseDateTime;
+    }
+
+    public void setShowtime(Showtime pShowtime) {
+        this.aShowtime = pShowtime;
     }
 
     public Showtime getShowtime() {
