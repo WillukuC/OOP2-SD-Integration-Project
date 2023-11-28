@@ -39,7 +39,11 @@ public class Movie {
      * @param pTitle The movie's new title
      */
     public void setTitle(String pTitle) {
-        this.aTitle = pTitle;
+        if (pTitle != null && !pTitle.trim().isEmpty()) {
+            this.aTitle = pTitle;
+        } else {
+            throw new IllegalArgumentException("Invalid title. Please provide a non-empty title.");
+        }
     }
 
     /**
@@ -57,7 +61,11 @@ public class Movie {
      * @param pGenre The movie's new genre
      */
     public void setGenre(String pGenre) {
-        this.aGenre = pGenre;
+        if (pGenre != null && !pGenre.trim().isEmpty()) {
+            this.aGenre = pGenre;
+        } else {
+            throw new IllegalArgumentException("Invalid genre. Please provide a non-empty genre.");
+        }
     }
 
     /**

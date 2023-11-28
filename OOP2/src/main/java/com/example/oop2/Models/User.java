@@ -66,7 +66,11 @@ public class User {
      * @param pID The user's new ID
      */
     public void setID(int pID) {
-        this.aID = pID;
+        if (pID >= 0) {
+            this.aID = pID;
+        } else {
+            throw new IllegalArgumentException("Invalid ID. Please provide an ID greater than or equal to 0.");
+        }
     }
 
     /**
@@ -84,7 +88,11 @@ public class User {
      * @param pUsername The user's new username
      */
     public void setUsername(String pUsername) {
-        this.aUsername = pUsername;
+        if (pUsername != null && !pUsername.trim().isEmpty()) {
+            this.aUsername = pUsername;
+        } else {
+            throw new IllegalArgumentException("Invalid username. Please provide a non-empty username.");
+        }
     }
 
     /**
@@ -102,7 +110,11 @@ public class User {
      * @param pEmail The user's new email address
      */
     public void setEmail(String pEmail) {
-        this.aEmail = pEmail;
+        if (pEmail.contains("@") && pEmail.contains(".")) {
+            this.aEmail = pEmail;
+        } else {
+            throw new IllegalArgumentException("Invalid email. Please provide an email that is formatted as such:\nuser@email.com");
+        }
     }
 
     /**
@@ -120,7 +132,11 @@ public class User {
      * @param pDateTimeJoined The user's new join date and time
      */
     public void setDateTimeJoined(LocalDateTime pDateTimeJoined) {
-        this.aDateTimeJoined = pDateTimeJoined;
+        if (pDateTimeJoined.isBefore(LocalDateTime.now()) || pDateTimeJoined.isEqual(LocalDateTime.now())) {
+            this.aDateTimeJoined = pDateTimeJoined;
+        } else {
+            throw new IllegalArgumentException("Invalid date. Please provide a date that is before or equal to the current date.");
+        }
     }
 
     /**
@@ -138,7 +154,11 @@ public class User {
      * @param pPassword The user's new password
      */
     public void setPassword(String pPassword) {
-        this.aPassword = pPassword;
+        if (pPassword.length() <= 8) {
+            this.aPassword = pPassword;
+        } else {
+            throw new IllegalArgumentException("Invalid password. Please provide a password that is greater than or equal to 8 characters.");
+        }
     }
 
     /**

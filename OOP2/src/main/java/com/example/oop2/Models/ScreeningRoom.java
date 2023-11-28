@@ -33,7 +33,11 @@ public class ScreeningRoom {
      * @param pRoomNumber the room's new number
      */
     public void setRoomNumber(int pRoomNumber) {
-        this.aRoomNumber = pRoomNumber;
+        if (pRoomNumber > 0) {
+            this.aRoomNumber = pRoomNumber;
+        } else {
+            throw new IllegalArgumentException("Invalid room number. Please provide a room number higher than 0.");
+        }
     }
 
     /**

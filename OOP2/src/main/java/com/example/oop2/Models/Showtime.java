@@ -60,8 +60,17 @@ public class Showtime {
         return aDateTime;
     }
 
+    /**
+     * Sets the showtime's date and time
+     *
+     * @param pDateTime The new date and time of the showtime
+     */
     public void setDateTime(LocalDateTime pDateTime) {
-        this.aDateTime = pDateTime;
+        if (pDateTime.isBefore(LocalDateTime.now()) || pDateTime.isEqual(LocalDateTime.now())) {
+            this.aDateTime = pDateTime;
+        } else {
+            throw new IllegalArgumentException("Invalid date. Please provide a date that is before or equal to the current date.");
+        }
     }
 
     /**
@@ -73,8 +82,17 @@ public class Showtime {
         return aMovie;
     }
 
+    /**
+     * Set the Movie of the showtime
+     *
+     * @param pMovie the showtime's new movie
+     */
     public void setMovie(Movie pMovie) {
-        this.aMovie = pMovie;
+        if (pMovie != null && MovieList.getMovieList().contains(pMovie)) {
+            this.aMovie = pMovie;
+        } else {
+            throw new IllegalArgumentException("Invalid Movie. Please provide a valid movie.");
+        }
     }
 
     /**
@@ -86,8 +104,17 @@ public class Showtime {
         return aScreeningRoom;
     }
 
+    /**
+     * Sets the screening room of the showtime
+     *
+     * @param pScreeningRoom The showtime's new screening room
+     */
     public void setScreeningRoom(ScreeningRoom pScreeningRoom) {
-        this.aScreeningRoom = pScreeningRoom;
+        if (pScreeningRoom.getRoomNumber() > 0 && ScreeningRoomList.getScreeningRoomList().contains(pScreeningRoom)) {
+            this.aScreeningRoom = pScreeningRoom;
+        } else {
+            throw new IllegalArgumentException("Invalid Screening Room. Please provide a valid screening room.");
+        }
     }
 
     /**

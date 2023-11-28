@@ -48,8 +48,17 @@ public class Ticket {
         return aTicketID;
     }
 
+    /**
+     * Sets the ticket ID
+     *
+     * @param pTicketId The new ID of the ticket
+     */
     public void setTicketID(int pTicketId) {
-        this.aTicketID = pTicketId;
+        if (pTicketId >= 0) {
+            this.aTicketID = pTicketId;
+        } else {
+            throw new IllegalArgumentException("Invalid ID. Please provide an ID greater than or equal to 0.");
+        }
     }
 
     /**
@@ -61,8 +70,17 @@ public class Ticket {
         return this.aClientID;
     }
 
+    /**
+     * Sets the ID of the client who purchased the ticket
+     *
+     * @param pClientID The new ID of the client who bought the ticket
+     */
     public void setClientID(int pClientID) {
-        this.aClientID = pClientID;
+        if (pClientID >= 0) {
+            this.aClientID = pClientID;
+        } else {
+            throw new IllegalArgumentException("Invalid ID. Please provide an ID greater than or equal to 0.");
+        }
     }
 
     /**
@@ -74,8 +92,17 @@ public class Ticket {
         return aPurchaseDateTime;
     }
 
+    /**
+     * Set the date and time the ticket was purchased
+     *
+     * @param pPurchaseDateTime The date and time of the purchase
+     */
     public void setPurchaseDateTime(LocalDateTime pPurchaseDateTime) {
-        this.aPurchaseDateTime = pPurchaseDateTime;
+        if (pPurchaseDateTime.isBefore(LocalDateTime.now()) || pPurchaseDateTime.isEqual(LocalDateTime.now())) {
+            this.aPurchaseDateTime = pPurchaseDateTime;
+        } else {
+            throw new IllegalArgumentException("Invalid date. Please provide a date that is before or equal to the current date.");
+        }
     }
 
     /**
@@ -87,8 +114,17 @@ public class Ticket {
         return aShowtime;
     }
 
+    /**
+     * Sets the showtime represented by the ticket
+     *
+     * @param pShowtime The new showtime of the ticket
+     */
     public void setShowtime(Showtime pShowtime) {
-        this.aShowtime = pShowtime;
+        if (pShowtime != null && ShowtimeList.getShowtimeList().contains(pShowtime)) {
+            this.aShowtime = pShowtime;
+        } else {
+            throw new IllegalArgumentException("Invalid Showtime. Please provide a valid showtime.");
+        }
     }
 
     /**
