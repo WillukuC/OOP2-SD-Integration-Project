@@ -11,11 +11,13 @@ public class ScreeningRoomDetailsController {
 
     @FXML
     private void onExitButtonClick(){
+        System.out.println("onExitButtonClick");
 
     }
 
     @FXML
     private void onSaveButtonClick(){
+        System.out.println("onSaveButtonClick");
 
     }
 }

@@ -14,11 +14,13 @@ public class MovieDetailsController {
 
     @FXML
     private void onSaveButtonClick(){
+        System.out.println("onSaveButtonClick");
 
     }
 
     @FXML
     private void onExitButtonClick(){
+        System.out.println("onExitButtonClick");
 
     }
 }

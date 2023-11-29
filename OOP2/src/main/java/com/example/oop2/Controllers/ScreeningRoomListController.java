@@ -12,16 +12,19 @@ public class ScreeningRoomListController {
 
     @FXML
     private void onUpdateButtonClick(){
+        System.out.println("onUpdateButtonClick");
 
     }
 
     @FXML
     private void onAddButtonClick(){
+        System.out.println("onAddButtonClick");
 
     }
 
     @FXML
     private void onDeleteButtonClick(){
+        System.out.println("onDeleteButtonClick");
 
     }
 }

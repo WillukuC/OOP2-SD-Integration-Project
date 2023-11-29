@@ -12,21 +12,25 @@ public class ShowtimeListController {
 
     @FXML
     private void onBuyTicketButtonClick(){
+        System.out.println("onBuyTicketButtonClick");
 
     }
 
     @FXML
     private void onUpdateButtonClick(){
+        System.out.println("onUpdateButtonClick");
 
     }
 
     @FXML
     private void onAddButtonClick(){
+        System.out.println("onAddButtonClick");
 
     }
 
     @FXML
     private void onDeleteButtonClick(){
+        System.out.println("onDeleteButtonClick");
 
     }
 }

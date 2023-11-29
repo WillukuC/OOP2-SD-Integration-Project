@@ -12,6 +12,7 @@ public class TicketSalesListController {
 
     @FXML
     private void onExitButtonClick(){
+        System.out.println("onExitButtonClick");
 
     }
 }

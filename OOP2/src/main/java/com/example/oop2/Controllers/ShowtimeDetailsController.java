@@ -21,11 +21,13 @@ public class ShowtimeDetailsController {
 
     @FXML
     private void onExitButtonClick(){
+        System.out.println("onExitButtonClick");
 
     }
 
     @FXML
     private void onSaveButtonClick(){
+        System.out.println("onSaveButtonClick");
 
     }
 }

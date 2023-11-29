@@ -10,7 +10,7 @@ public class ClientListController {
     @FXML
     private ListView<Client> clientListListview;
     @FXML
-    protected void onExitButtonClick(){
-
+    private void onExitButtonClick(){
+        System.out.println("onExitButtonClick");
     }
 }

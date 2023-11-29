@@ -15,6 +15,7 @@ public class SignupController {
 
     @FXML
     private void onRegisterButtonClick(){
+        System.out.println("onRegisterButtonClick");
 
     }
 }

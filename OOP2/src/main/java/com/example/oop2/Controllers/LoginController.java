@@ -18,11 +18,13 @@ public class LoginController {
 
     @FXML
     private void onLoginButtonClick(){
+        System.out.println("onLoginButtonClick");
 
     }
 
     @FXML
     private void onSignUpButtonClick(){
+        System.out.println("onSignUpButtonClick");
 
     }
 }
