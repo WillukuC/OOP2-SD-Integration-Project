@@ -10,16 +10,16 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="194.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.oop2.Controllers.MovieDetailsController">
    <children>
-      <ChoiceBox layoutX="230.0" layoutY="108.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="230.0" layoutY="108.0" prefWidth="150.0" fx:id=""/>
       <Label layoutX="101.0" layoutY="14.0" text="Movie Details">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <TextField layoutX="38.0" layoutY="107.0" />
+      <TextField layoutX="38.0" layoutY="107.0" fx:id="movieTitleTextField"/>
       <Label layoutX="230.0" layoutY="81.0" text="Select a genre:" />
       <Label layoutX="37.0" layoutY="81.0" text="Enter movie title:" />
-      <Button layoutX="132.0" layoutY="153.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="56.0" text="Exit" />
-      <Button layoutX="230.0" layoutY="152.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="56.0" text="Save" />
+      <Button layoutX="132.0" layoutY="153.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="56.0" text="Exit" onAction="#onExitButtonClick"/>
+      <Button layoutX="230.0" layoutY="152.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="56.0" text="Save" onAction="#onSaveButtonClick"/>
    </children>
 </AnchorPane>

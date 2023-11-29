@@ -15,10 +15,10 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <ListView layoutX="14.0" layoutY="77.0" prefHeight="320.0" prefWidth="200.0" />
-      <Button layoutX="229.0" layoutY="224.0" mnemonicParsing="false" text="Buy Ticket" />
-      <Button layoutX="229.0" layoutY="292.0" mnemonicParsing="false" opacity="0.0" text="Update" />
-      <Button layoutX="229.0" layoutY="371.0" mnemonicParsing="false" opacity="0.0" text="Delete" />
-      <Button layoutX="229.0" layoutY="332.0" mnemonicParsing="false" opacity="0.0" text="Add" />
+      <ListView layoutX="14.0" layoutY="77.0" prefHeight="320.0" prefWidth="200.0" fx:id="showtimeListListView"/>
+      <Button layoutX="229.0" layoutY="224.0" mnemonicParsing="false" text="Buy Ticket" onAction="#onBuyTicketButtonClick"/>
+      <Button layoutX="229.0" layoutY="292.0" mnemonicParsing="false" opacity="0.0" text="Update" onAction="#onUpdateButtonClick"/>
+      <Button layoutX="229.0" layoutY="371.0" mnemonicParsing="false" opacity="0.0" text="Delete" onAction="#onDeleteButtonClick"/>
+      <Button layoutX="229.0" layoutY="332.0" mnemonicParsing="false" opacity="0.0" text="Add" onAction="#onAddButtonClick"/>
    </children>
 </AnchorPane>

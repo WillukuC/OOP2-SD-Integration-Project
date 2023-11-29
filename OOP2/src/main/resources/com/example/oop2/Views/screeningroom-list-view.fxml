@@ -15,9 +15,9 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <ListView layoutX="14.0" layoutY="74.0" prefHeight="357.0" prefWidth="200.0" />
-      <Button layoutX="223.0" layoutY="204.0" mnemonicParsing="false" text="Update" />
-      <Button layoutX="224.0" layoutY="240.0" mnemonicParsing="false" text="Add" />
-      <Button layoutX="224.0" layoutY="276.0" mnemonicParsing="false" text="Delete" />
+      <ListView layoutX="14.0" layoutY="74.0" prefHeight="357.0" prefWidth="200.0" fx:id="screeningRoomListListView"/>
+      <Button layoutX="223.0" layoutY="204.0" mnemonicParsing="false" text="Update" onAction="#onUpdateButtonClick"/>
+      <Button layoutX="224.0" layoutY="240.0" mnemonicParsing="false" text="Add" onAction="#onAddButtonClick"/>
+      <Button layoutX="224.0" layoutY="276.0" mnemonicParsing="false" text="Delete" onAction="#onDeleteButtonClick"/>
    </children>
 </AnchorPane>

@@ -2,6 +2,9 @@ package com.example.oop2.Controllers;
 
 import com.example.oop2.Models.*;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 import java.util.List;
 
@@ -36,5 +39,23 @@ public class LoginController {
         for (User user : users ) {
             System.out.println(user.toString());
         }
+    }
+
+    @FXML
+    private TextField usernameTextField;
+    @FXML
+    private PasswordField passwordTextField;
+
+
+    @FXML
+    private void onLoginButtonClick(){
+        System.out.println("onLoginButtonClick");
+
+    }
+
+    @FXML
+    private void onSignUpButtonClick(){
+        System.out.println("onSignUpButtonClick");
+
     }
 }
