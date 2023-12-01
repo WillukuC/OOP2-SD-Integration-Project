@@ -130,22 +130,7 @@ public class ShowtimeList {
      * Saves the list of showtimes to showtimes.csv
      */
     public static void saveShowtimeList() {
-        try {
-            // The filepath to the list of showtimes.
-            String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\showtimes.csv";
-
-            // Writes over the file completely, adding each showtime in the list to the file.
-            try (FileWriter fw = new FileWriter(filePath)) {
-                // Writes the file header
-                fw.append("ShowtimeID,DateTime,Movie,ScreeningRoom").append(System.lineSeparator());
-                for (Showtime showtime : showtimeList) {
-                    fw.append(showtime.toString()).append(System.lineSeparator());
-                }
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to save list to file.");
-        }
+        String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\showtimes.csv";
+        DataSaver.saveData(filePath, getShowtimeList());
     }
 }

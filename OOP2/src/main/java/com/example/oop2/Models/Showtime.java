@@ -66,7 +66,7 @@ public class Showtime {
      * @param pDateTime The new date and time of the showtime
      */
     public void setDateTime(LocalDateTime pDateTime) {
-        if (pDateTime.isBefore(LocalDateTime.now()) || pDateTime.isEqual(LocalDateTime.now())) {
+        if (pDateTime != null) {
             this.aDateTime = pDateTime;
         } else {
             throw new IllegalArgumentException("Invalid date. Please provide a date that is before or equal to the current date.");
