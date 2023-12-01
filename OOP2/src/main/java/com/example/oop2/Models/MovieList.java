@@ -104,6 +104,7 @@ public class MovieList {
      */
     public static void saveMovieList() {
         String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\movies.csv";
-        DataSaver.saveData(filePath, getMovieList());
+        String header = "Title,Genre";
+        DataSaver.saveData(filePath, header, getMovieList());
     }
 }

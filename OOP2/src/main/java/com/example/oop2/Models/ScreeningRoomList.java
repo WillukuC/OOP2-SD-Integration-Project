@@ -105,6 +105,7 @@ public class ScreeningRoomList {
      */
     public static void saveScreeningRoomList() {
         String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\screeningrooms.csv";
-        DataSaver.saveData(filePath, getScreeningRoomList());
+        String header = "RoomNumber";
+        DataSaver.saveData(filePath, header, getScreeningRoomList());
     }
 }

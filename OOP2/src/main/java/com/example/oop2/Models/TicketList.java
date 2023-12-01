@@ -125,6 +125,7 @@ public class TicketList {
      */
     public static void saveTicketList() {
         String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\tickets.csv";
-        DataSaver.saveData(filePath, getTicketList());
+        String header = "TicketID,ClientID,PurchaseDateTime,ShowtimeID";
+        DataSaver.saveData(filePath, header, getTicketList());
     }
 }

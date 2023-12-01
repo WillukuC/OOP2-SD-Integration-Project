@@ -131,6 +131,7 @@ public class ShowtimeList {
      */
     public static void saveShowtimeList() {
         String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\showtimes.csv";
-        DataSaver.saveData(filePath, getShowtimeList());
+        String header = "ShowtimeID,DateTime,Movie,ScreeningRoom";
+        DataSaver.saveData(filePath, header, getShowtimeList());
     }
 }

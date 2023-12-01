@@ -125,6 +125,7 @@ public class UserList {
      */
     public static void saveUserList() {
         String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\users.csv";
-        DataSaver.saveData(filePath, getUserList());
+        String header = "UserID,Username,Email,DateTimeJoined,Password,IsManager";
+        DataSaver.saveData(filePath, header, getUserList());
     }
 }
