@@ -104,23 +104,7 @@ public class ScreeningRoomList {
      * Saves the list of screening rooms to screeningrooms.csv
      */
     public static void saveScreeningRoomList() {
-        try {
-            // The filepath to the list of screening rooms.
-            String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\screeningrooms.csv";
-
-            // Writes over the file completely, adding each screening room in the list to the file.
-            try (FileWriter fw = new FileWriter(filePath)) {
-                // Writes the file header
-                fw.append("RoomNumber").append(System.lineSeparator());
-                for (ScreeningRoom screeningRoom : screeningRoomList) {
-                    fw.append(screeningRoom.toString()).append(System.lineSeparator());
-                }
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to save list to file.");
-        }
+        String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\screeningrooms.csv";
+        DataSaver.saveData(filePath, getScreeningRoomList());
     }
-
 }

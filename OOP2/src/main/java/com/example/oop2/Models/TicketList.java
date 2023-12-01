@@ -124,22 +124,7 @@ public class TicketList {
      * Saves the list of tickets to tickets.csv
      */
     public static void saveTicketList() {
-        try {
-            // The filepath to the list of tickets.
-            String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\tickets.csv";
-
-            // Writes over the file completely, adding each ticket in the list to the file.
-            try (FileWriter fw = new FileWriter(filePath)) {
-                // Writes the file header
-                fw.append("TicketID,ClientID,PurchaseDateTime,ShowtimeID").append(System.lineSeparator());
-                for (Ticket ticket : ticketList) {
-                    fw.append(ticket.toString()).append(System.lineSeparator());
-                }
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to save list to file.");
-        }
+        String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\tickets.csv";
+        DataSaver.saveData(filePath, getTicketList());
     }
 }

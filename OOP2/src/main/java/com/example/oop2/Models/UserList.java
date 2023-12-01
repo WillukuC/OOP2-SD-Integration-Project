@@ -124,22 +124,7 @@ public class UserList {
      * Saves the list of users to users.csv
      */
     public static void saveUserList() {
-        try {
-            // The filepath to the list of users.
-            String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\users.csv";
-
-            // Writes over the file completely, adding each user in the list to the file.
-            try (FileWriter fw = new FileWriter(filePath)) {
-                // Writes the file header
-                fw.append("UserID,Username,Email,DateTimeJoined,Password,IsManager").append(System.lineSeparator());
-                for (User user : userList) {
-                    fw.append(user.toString()).append(System.lineSeparator());
-                }
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to save list to file.");
-        }
+        String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\users.csv";
+        DataSaver.saveData(filePath, getUserList());
     }
 }

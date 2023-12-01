@@ -103,22 +103,7 @@ public class MovieList {
      * Saves the list of movies to movies.csv
      */
     public static void saveMovieList() {
-        try {
-            // The filepath to the list of movies.
-            String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\movies.csv";
-
-            // Writes over the file completely, adding each movie in the list to the file.
-            try (FileWriter fw = new FileWriter(filePath)) {
-                // Writes the file header
-                fw.append("Title,Genre").append(System.lineSeparator());
-                for (Movie movie : movieList) {
-                    fw.append(movie.toString()).append(System.lineSeparator());
-                }
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to save list to file.");
-        }
+        String filePath = "src\\main\\resources\\com\\example\\oop2\\Data\\movies.csv";
+        DataSaver.saveData(filePath, getMovieList());
     }
 }
