@@ -26,4 +26,35 @@ public class DataSaver {
             throw new RuntimeException("Failed to save list to file.");
         }
     }
+    public static void testData(){
+        System.out.println("\n-----===== MOVIES =====-----");
+        List<Movie> movies = MovieList.getMovieList();
+        for (Movie movie : movies) {
+            System.out.println(movie.toString());
+        }
+
+        System.out.println("\n-----===== SCREENING ROOMS =====-----");
+        List<ScreeningRoom> screeningRooms = ScreeningRoomList.getScreeningRoomList();
+        for (ScreeningRoom screeningRoom : screeningRooms) {
+            System.out.println(screeningRoom.toString());
+        }
+
+        System.out.println("\n-----===== SHOWTIMES =====-----");
+        List<Showtime> showtimes = ShowtimeList.getShowtimeList();
+        for (Showtime showtime : showtimes) {
+            System.out.println(showtime.toString());
+        }
+
+        System.out.println("\n-----===== TICKETS =====-----");
+        List<Ticket> tickets = TicketList.getTicketList();
+        for (Ticket ticket : tickets) {
+            System.out.println(ticket.toString());
+        }
+
+        System.out.println("\n-----===== USERS =====-----");
+        List<User> users = UserList.getUserList();
+        for (User user : users ) {
+            System.out.println(user.toString());
+        }
+    }
 }
