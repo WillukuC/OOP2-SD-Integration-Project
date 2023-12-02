@@ -5,17 +5,33 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- *
+ *  Helper class that performs the saving and testing of data.
  */
-public class DataSaver {
-    private final DataSaver aDataSaver = new DataSaver();
-    private DataSaver(){}
+public class DataHelper {
+    /**
+     * The global DataHelper
+     */
+    private final DataHelper aDataHelper = new DataHelper();
+
+    /**
+     * DataHelper constructor, empty and private to prevent initialization
+     */
+    private DataHelper(){}
+
+    /**
+     * Method for saving data to files.
+     *
+     * @param filePath  The path to the file data is being saved to
+     * @param header    The header line of the file, which describes the attributes of the data
+     * @param dataList  The list of data to be written to the file
+     */
     public static void saveData(String filePath, String header, List dataList) {
         try {
-            // Writes over the file completely, adding each movie in the list to the file.
+            // Writes over the file completely, adding each data entry in the list to the file.
             try (FileWriter fw = new FileWriter(filePath)) {
                 // Writes the file header
                 fw.append(header).append(System.lineSeparator());
+                // Adds each object in the list to the file
                 for (Object o : dataList) {
                     fw.append(o.toString()).append(System.lineSeparator());
                 }
@@ -26,6 +42,11 @@ public class DataSaver {
             throw new RuntimeException("Failed to save list to file.");
         }
     }
+
+    /**
+     * Utility method to test if the data files can be properly read.
+     * Prints all data to the console.
+     */
     public static void testData(){
         System.out.println("\n-----===== MOVIES =====-----");
         List<Movie> movies = MovieList.getMovieList();

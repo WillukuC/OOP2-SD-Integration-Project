@@ -52,7 +52,7 @@ public class LoginController {
 
     @FXML
     private void onSignUpButtonClick(){
-        DataSaver.testData();
+        DataHelper.testData();
         System.out.println("onSignUpButtonClick");
     }
 }
