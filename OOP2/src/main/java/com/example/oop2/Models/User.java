@@ -166,7 +166,7 @@ public class User {
      *
      * @return True if Manager, False if Client
      */
-    public boolean isIsManager() {
+    public boolean isManager() {
         return aIsManager;
     }
 

@@ -17,7 +17,7 @@ public class LoginController {
         for (User user : UserList.getUserList()) {
             if (user.getUsername().equals(usernameTextField.getText())) {
                 if (checkPassword(user)) {
-                    if (!user.isIsManager()) {
+                    if (!user.isManager()) {
                         System.out.println("Open Showtime list");
                     }
                     else {
