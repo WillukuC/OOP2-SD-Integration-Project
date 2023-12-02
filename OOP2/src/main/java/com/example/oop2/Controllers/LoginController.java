@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,8 +52,9 @@ public class LoginController {
     private PasswordField passwordTextField;
 
     @FXML
-    private void onSignUpButtonClick(){
+    private void onSignUpButtonClick(ActionEvent pEvent) throws IOException {
         DataHelper.testData();
         System.out.println("onSignUpButtonClick");
+        SceneHelper.changeScene("Views/signup-view.fxml", pEvent);
     }
 }
