@@ -1,13 +1,17 @@
 package com.example.oop2.Controllers;
 
+import com.example.oop2.Models.SceneHelper;
 import com.example.oop2.Models.User;
 import com.example.oop2.Models.UserList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ClientListController {
 
@@ -26,8 +30,9 @@ public class ClientListController {
         clientListview.setItems(clientList);
     }
     @FXML
-    private void onCloseButtonClick(){
+    private void onCloseButtonClick(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+        SceneHelper.changeScene("Views/dashboard-list-view.fxml", actionEvent);
     }
 }

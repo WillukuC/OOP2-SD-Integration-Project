@@ -12,17 +12,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginController {
-    public void onEnter(ActionEvent actionEvent) {
+    public void onEnter(ActionEvent actionEvent) throws IOException {
         boolean isCorrect = false;
 
         for (User user : UserList.getUserList()) {
             if (user.getUsername().equals(usernameTextField.getText())) {
                 if (checkPassword(user)) {
                     if (!user.isManager()) {
-                        System.out.println("Open Showtime list");
+                        SceneHelper.changeScene("Views/showtime-list-view.fxml", actionEvent);
                     }
                     else {
-                        System.out.println("Open Dashboard");
+                        SceneHelper.changeScene("Views/dashboard-view.fxml", actionEvent);
                     }
                 }
                 isCorrect = true;
@@ -57,4 +57,5 @@ public class LoginController {
         System.out.println("onSignUpButtonClick");
         SceneHelper.changeScene("Views/signup-view.fxml", pEvent);
     }
+
 }
