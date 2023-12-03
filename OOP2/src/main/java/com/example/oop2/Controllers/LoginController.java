@@ -6,22 +6,22 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
 public class LoginController {
-    public void onEnter(ActionEvent actionEvent) {
+    public void onEnter(ActionEvent actionEvent) throws IOException {
         boolean isCorrect = false;
 
         for (User user : UserList.getUserList()) {
             if (user.getUsername().equals(usernameTextField.getText())) {
                 if (checkPassword(user)) {
                     if (!user.isManager()) {
-                        System.out.println("Open Showtime list");
+                        SceneHelper.closeWindow(passwordTextField);
+                        SceneHelper.changeScene("Views/showtime-list-view.fxml", actionEvent, "Showtimes");
                     }
                     else {
-                        System.out.println("Open Dashboard");
+                        SceneHelper.closeWindow(passwordTextField);
+                        SceneHelper.changeScene("Views/dashboard-view.fxml", actionEvent, "Dashboard");
                     }
                 }
                 isCorrect = true;
@@ -51,8 +51,10 @@ public class LoginController {
     private PasswordField passwordTextField;
 
     @FXML
-    private void onSignUpButtonClick(){
+    private void onSignUpButtonClick(ActionEvent pEvent) throws IOException {
         DataHelper.testData();
         System.out.println("onSignUpButtonClick");
+        SceneHelper.changeScene("Views/signup-view.fxml", pEvent, "Sign-Up");
     }
+
 }

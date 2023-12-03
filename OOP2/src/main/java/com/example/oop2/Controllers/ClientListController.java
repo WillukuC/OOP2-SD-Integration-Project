@@ -1,5 +1,6 @@
 package com.example.oop2.Controllers;
 
+import com.example.oop2.Models.SceneHelper;
 import com.example.oop2.Models.User;
 import com.example.oop2.Models.UserList;
 import javafx.collections.FXCollections;
@@ -7,7 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
+
 
 public class ClientListController {
 
@@ -27,7 +28,6 @@ public class ClientListController {
     }
     @FXML
     private void onCloseButtonClick(){
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
+        SceneHelper.closeWindow(clientListview);
     }
 }
