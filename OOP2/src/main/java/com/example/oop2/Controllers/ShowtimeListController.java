@@ -5,7 +5,6 @@ import com.example.oop2.Models.Showtime;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-
 import java.io.IOException;
 
 
@@ -13,12 +12,9 @@ public class ShowtimeListController {
     @FXML
     private ListView<Showtime> showtimeListListView;
 
-
-
     @FXML
     private void onBuyTicketButtonClick(){
         System.out.println("onBuyTicketButtonClick");
-
     }
 
     @FXML
@@ -36,6 +32,5 @@ public class ShowtimeListController {
     @FXML
     private void onDeleteButtonClick(){
         System.out.println("onDeleteButtonClick");
-
     }
 }

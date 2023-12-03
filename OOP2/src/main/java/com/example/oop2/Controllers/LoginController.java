@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LoginController {
     public void onEnter(ActionEvent actionEvent) throws IOException {
@@ -19,9 +16,11 @@ public class LoginController {
             if (user.getUsername().equals(usernameTextField.getText())) {
                 if (checkPassword(user)) {
                     if (!user.isManager()) {
+                        SceneHelper.closeWindow(passwordTextField);
                         SceneHelper.changeScene("Views/showtime-list-view.fxml", actionEvent);
                     }
                     else {
+                        SceneHelper.closeWindow(passwordTextField);
                         SceneHelper.changeScene("Views/dashboard-view.fxml", actionEvent);
                     }
                 }

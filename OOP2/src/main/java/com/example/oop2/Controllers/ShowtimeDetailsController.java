@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-
 import java.io.IOException;
 
 public class ShowtimeDetailsController {
@@ -21,17 +20,15 @@ public class ShowtimeDetailsController {
     @FXML
     private TextField timeTextField;
 
-
-
     @FXML
     private void onExitButtonClick(ActionEvent actionEvent) throws IOException {
         System.out.println("onExitButtonClick");
-        SceneHelper.changeScene("Views/showtime-list-view.fxml", actionEvent);
+        SceneHelper.closeWindow(timeTextField);
     }
 
     @FXML
     private void onSaveButtonClick(ActionEvent actionEvent) throws IOException{
         System.out.println("onSaveButtonClick");
-        SceneHelper.changeScene("Views/showtime-list-view.fxml", actionEvent);
+        SceneHelper.closeWindow(timeTextField);
     }
 }

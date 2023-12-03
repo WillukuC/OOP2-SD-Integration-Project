@@ -26,4 +26,9 @@ public class SceneHelper {
         nextStage.initOwner(((Node) pEvent.getSource()).getScene().getWindow());
         nextStage.showAndWait();
     }
+
+    public static void closeWindow(Node node) {
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+    }
 }

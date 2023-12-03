@@ -5,7 +5,6 @@ import com.example.oop2.Models.SceneHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-
 import java.io.IOException;
 
 public class MovieListController {
@@ -28,6 +27,5 @@ public class MovieListController {
     @FXML
     private void onDeleteButtonClick(){
         System.out.println("onDeleteButtonClick");
-
     }
 }

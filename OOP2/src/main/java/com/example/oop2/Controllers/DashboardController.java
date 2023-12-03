@@ -3,7 +3,6 @@ package com.example.oop2.Controllers;
 import com.example.oop2.Models.SceneHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import java.io.IOException;
 
 public class DashboardController {

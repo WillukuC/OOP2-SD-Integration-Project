@@ -5,7 +5,6 @@ import com.example.oop2.Models.ScreeningRoom;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-
 import java.io.IOException;
 
 public class ScreeningRoomListController {
