@@ -17,11 +17,11 @@ public class LoginController {
                 if (checkPassword(user)) {
                     if (!user.isManager()) {
                         SceneHelper.closeWindow(passwordTextField);
-                        SceneHelper.changeScene("Views/showtime-list-view.fxml", actionEvent);
+                        SceneHelper.changeScene("Views/showtime-list-view.fxml", actionEvent, "Showtimes");
                     }
                     else {
                         SceneHelper.closeWindow(passwordTextField);
-                        SceneHelper.changeScene("Views/dashboard-view.fxml", actionEvent);
+                        SceneHelper.changeScene("Views/dashboard-view.fxml", actionEvent, "Dashboard");
                     }
                 }
                 isCorrect = true;
@@ -54,7 +54,7 @@ public class LoginController {
     private void onSignUpButtonClick(ActionEvent pEvent) throws IOException {
         DataHelper.testData();
         System.out.println("onSignUpButtonClick");
-        SceneHelper.changeScene("Views/signup-view.fxml", pEvent);
+        SceneHelper.changeScene("Views/signup-view.fxml", pEvent, "Sign-Up");
     }
 
 }

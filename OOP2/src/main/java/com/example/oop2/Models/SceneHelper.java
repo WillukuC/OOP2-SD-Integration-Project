@@ -16,12 +16,12 @@ import java.util.EventObject;
 public class SceneHelper {
     private static final SceneHelper sh = new SceneHelper();
 
-    public static void changeScene(String destination, ActionEvent pEvent) throws IOException {
+    public static void changeScene(String destination, ActionEvent pEvent, String title) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MovieTheatreApplication.class.getResource(destination));
         Scene nextScene = new Scene(fxmlLoader.load());
         Stage nextStage = new Stage();
         nextStage.setScene(nextScene);
-        nextStage.setTitle("test");
+        nextStage.setTitle(title);
         nextStage.initModality(Modality.WINDOW_MODAL);
         nextStage.initOwner(((Node) pEvent.getSource()).getScene().getWindow());
         nextStage.showAndWait();

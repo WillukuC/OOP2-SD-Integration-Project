@@ -15,13 +15,13 @@ public class MovieListController {
     @FXML
     private void onUpdateButtonClick(ActionEvent actionEvent) throws IOException {
         System.out.println("onUpdateButtonClick");
-        SceneHelper.changeScene("Views/movie-details-view.fxml", actionEvent);
+        SceneHelper.changeScene("Views/movie-details-view.fxml", actionEvent, "Movie Details");
     }
 
     @FXML
     private void onAddButtonClick(ActionEvent actionEvent) throws IOException{
         System.out.println("onAddButtonClick");
-        SceneHelper.changeScene("Views/movie-details-view.fxml", actionEvent);
+        SceneHelper.changeScene("Views/movie-details-view.fxml", actionEvent, "Movie Details");
     }
 
     @FXML

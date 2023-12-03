@@ -16,13 +16,13 @@ public class ScreeningRoomListController {
     @FXML
     private void onUpdateButtonClick(ActionEvent actionEvent) throws IOException {
         System.out.println("onUpdateButtonClick");
-        SceneHelper.changeScene("Views/screeningroom-details-view.fxml", actionEvent);
+        SceneHelper.changeScene("Views/screeningroom-details-view.fxml", actionEvent, "Screening Room Details");
     }
 
     @FXML
     private void onAddButtonClick(ActionEvent actionEvent) throws IOException {
         System.out.println("onAddButtonClick");
-        SceneHelper.changeScene("Views/screeningroom-details-view.fxml", actionEvent);
+        SceneHelper.changeScene("Views/screeningroom-details-view.fxml", actionEvent, "Screening Room Details");
     }
 
     @FXML

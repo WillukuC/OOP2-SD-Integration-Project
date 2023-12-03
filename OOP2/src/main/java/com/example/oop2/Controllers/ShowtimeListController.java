@@ -20,13 +20,13 @@ public class ShowtimeListController {
     @FXML
     private void onUpdateButtonClick(ActionEvent actionEvent) throws IOException {
         System.out.println("onUpdateButtonClick");
-        SceneHelper.changeScene("Views/showtime-details-view.fxml", actionEvent);
+        SceneHelper.changeScene("Views/showtime-details-view.fxml", actionEvent, "Showtime Details");
     }
 
     @FXML
     private void onAddButtonClick(ActionEvent actionEvent) throws IOException{
         System.out.println("onAddButtonClick");
-        SceneHelper.changeScene("Views/showtime-details-view.fxml", actionEvent);
+        SceneHelper.changeScene("Views/showtime-details-view.fxml", actionEvent, "Showtime Details");
     }
 
     @FXML
