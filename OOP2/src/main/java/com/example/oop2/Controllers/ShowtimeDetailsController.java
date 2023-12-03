@@ -1,11 +1,14 @@
 package com.example.oop2.Controllers;
 
 import com.example.oop2.Models.Movie;
+import com.example.oop2.Models.SceneHelper;
 import com.example.oop2.Models.ScreeningRoom;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import java.io.IOException;
 
 public class ShowtimeDetailsController {
     @FXML
@@ -17,17 +20,15 @@ public class ShowtimeDetailsController {
     @FXML
     private TextField timeTextField;
 
-
-
     @FXML
-    private void onExitButtonClick(){
+    private void onExitButtonClick(ActionEvent actionEvent) throws IOException {
         System.out.println("onExitButtonClick");
-
+        SceneHelper.closeWindow(timeTextField);
     }
 
     @FXML
-    private void onSaveButtonClick(){
+    private void onSaveButtonClick(ActionEvent actionEvent) throws IOException{
         System.out.println("onSaveButtonClick");
-
+        SceneHelper.closeWindow(timeTextField);
     }
 }

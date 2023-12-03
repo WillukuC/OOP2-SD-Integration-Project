@@ -1,5 +1,6 @@
 package com.example.oop2.Controllers;
 
+import com.example.oop2.Models.SceneHelper;
 import com.example.oop2.Models.ScreeningRoom;
 import com.example.oop2.Models.ScreeningRoomList;
 import javafx.collections.FXCollections;
@@ -8,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import java.io.IOException;
 import javafx.stage.Stage;
 
 public class ScreeningRoomListController {
@@ -21,15 +23,15 @@ public class ScreeningRoomListController {
     }
 
     @FXML
-    private void onUpdateButtonClick(){
+    private void onUpdateButtonClick(ActionEvent actionEvent) throws IOException {
         System.out.println("onUpdateButtonClick");
-
+        SceneHelper.changeScene("Views/screeningroom-details-view.fxml", actionEvent, "Screening Room Details");
     }
 
     @FXML
-    private void onAddButtonClick(){
+    private void onAddButtonClick(ActionEvent actionEvent) throws IOException {
         System.out.println("onAddButtonClick");
-
+        SceneHelper.changeScene("Views/screeningroom-details-view.fxml", actionEvent, "Screening Room Details");
     }
 
     @FXML

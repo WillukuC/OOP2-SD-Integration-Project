@@ -13,7 +13,7 @@ public class MovieTheatreApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MovieTheatreApplication.class.getResource("Views/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("MT");
+        stage.setTitle("Log-In");
         stage.setScene(scene);
         stage.show();
     }
