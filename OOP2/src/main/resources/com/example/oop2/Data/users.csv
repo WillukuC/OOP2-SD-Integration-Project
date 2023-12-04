@@ -1,5 +1,5 @@
 UserID,Username,Email,DateTimeJoined,Password,IsManager
-0,WCLark,william@clark.net,2023-11-20T18:00,1234,false
+0,WClark,william@clark.net,2023-11-20T18:00,1234,false
 1,CMadore,colin@madore.net,2023-11-20T18:00,1234,false
 2,LPLeblanc,louis.philippe@leblanc.net,2023-11-20T18:00,1234,false
 3,MHarte,matthias@harte.net,2022-11-20T18:00,1234,true

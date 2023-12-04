@@ -128,4 +128,13 @@ public class UserList {
         String header = "UserID,Username,Email,DateTimeJoined,Password,IsManager";
         DataHelper.saveData(filePath, header, getUserList());
     }
+
+    public static User getUserByUsername(String pUsername) {
+        for (User user : userList) {
+            if (pUsername.equals(user.getUsername())) {
+                return user;
+            }
+        }
+        return null;
+    }
 }

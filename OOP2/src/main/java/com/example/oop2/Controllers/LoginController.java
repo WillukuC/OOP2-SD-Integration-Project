@@ -6,49 +6,51 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
 import java.io.IOException;
 
 public class LoginController {
-    public void onEnter(ActionEvent actionEvent) throws IOException {
-        boolean isCorrect = false;
-
-        for (User user : UserList.getUserList()) {
-            if (user.getUsername().equals(usernameTextField.getText())) {
-                if (checkPassword(user)) {
-                    if (!user.isManager()) {
-                        SceneHelper.closeWindow(passwordTextField);
-                        SceneHelper.changeScene("Views/showtime-list-view.fxml", actionEvent, "Showtimes");
-                    }
-                    else {
-                        SceneHelper.closeWindow(passwordTextField);
-                        SceneHelper.changeScene("Views/dashboard-view.fxml", actionEvent, "Dashboard");
-                    }
-                }
-                isCorrect = true;
-            }
-        }
-        if (!isCorrect) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "The username is wrong");
-            alert.showAndWait();
-        }
-    }
-
-    private boolean checkPassword(User user) {
-        if (user.getPassword().equals(passwordTextField.getText())) {
-            return true;
-        }
-        else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "The password is wrong");
-            alert.showAndWait();
-        }
-        return false;
-    }
-
-
     @FXML
     private TextField usernameTextField;
+
     @FXML
     private PasswordField passwordTextField;
+
+    public void onEnter(ActionEvent actionEvent) throws IOException {
+        // Gets the username and password from the text fields
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
+
+        // Creates a new alert
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+
+        if (username.trim().isEmpty()) {
+            alert.setContentText("Please enter your username.");
+            alert.showAndWait();
+        } else if (UserList.getUserByUsername(username) == null) {
+            alert.setContentText("The username is incorrect. Please re-enter your username.");
+            alert.showAndWait();
+        } else if (password.trim().isEmpty()) {
+            alert.setContentText("Please enter your password.");
+            alert.showAndWait();
+        } else {
+            User user = UserList.getUserByUsername(username);
+            assert user != null;
+            if (!user.isCorrectPassword(password)) {
+                alert.setContentText("The password is incorrect. Please re-enter your password.");
+                alert.showAndWait();
+            } else {
+                if (user.isManager()) {
+                    SceneHelper.closeWindow(passwordTextField);
+                    SceneHelper.changeScene("Views/dashboard-view.fxml", actionEvent, "Dashboard");
+                } else {
+                    SceneHelper.setCurrentUser(user);
+                    SceneHelper.closeWindow(passwordTextField);
+                    SceneHelper.changeScene("Views/showtime-list-view.fxml", actionEvent, "Showtimes");
+                }
+            }
+        }
+    }
 
     @FXML
     private void onSignUpButtonClick(ActionEvent pEvent) throws IOException {

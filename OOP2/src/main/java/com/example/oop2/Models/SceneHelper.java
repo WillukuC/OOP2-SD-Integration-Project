@@ -16,6 +16,7 @@ import java.io.IOException;
  */
 public class SceneHelper {
     private static final SceneHelper sh = new SceneHelper();
+    private static User aCurrentUser = null;
 
     /**
      * changeScene changes to the desired scene by passing the destination, an ActionEvent and a title
@@ -41,5 +42,13 @@ public class SceneHelper {
     public static void closeWindow(Node node) {
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
+    }
+
+    public static void setCurrentUser(User pCurrentUser) {
+        aCurrentUser = pCurrentUser;
+    }
+
+    public static User getCurrentUser() {
+        return aCurrentUser;
     }
 }

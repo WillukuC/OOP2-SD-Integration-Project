@@ -1,6 +1,7 @@
 package com.example.oop2.Models;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * Generic User class for the movie theatre application.
@@ -193,5 +194,15 @@ public class User {
                 this.aDateTimeJoined + "," +
                 this.aPassword + "," +
                 this.aIsManager;
+    }
+
+    /**
+     * Verifies if a given String matches the user password
+     *
+     * @param pPassword The password input by the user
+     * @return          True if the password is correct, false if not
+     */
+    public boolean isCorrectPassword(String pPassword) {
+        return Objects.equals(pPassword, aPassword);
     }
 }
