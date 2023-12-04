@@ -4,6 +4,8 @@ import com.example.oop2.Models.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -11,15 +13,18 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
 
 
 public class ShowtimeListController {
-    private User aCurrentUser = SceneHelper.getCurrentUser();
+    @FXML
+    private Spinner<Integer> ticketSpinner = new Spinner<>();
+    private final User aCurrentUser = SceneHelper.getCurrentUser();
     @FXML
     private TableView<Showtime> showtimeTableView;
     @FXML
     private void initialize() {
+        ticketSpinner.setPromptText("# of tickets");
+
         TableColumn<Showtime, String> movieTitleColumn = new TableColumn<>("Movie Title");
         movieTitleColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getMovie().getTitle()));
 
@@ -39,12 +44,34 @@ public class ShowtimeListController {
     }
     @FXML
     private void onBuyTicketButtonClick(){
-        int ticketID = TicketList.getTicketList().size();
-        int clientID = aCurrentUser.getID();
-        LocalDateTime purchaseTime = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
-        Showtime showtime = showtimeTableView.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.WARNING);
 
-        TicketList.addTicket(new Ticket(ticketID, clientID, purchaseTime, showtime));
+        // Check if there is a selected showtime
+        if (showtimeTableView.getSelectionModel().getSelectedIndex() == -1) {
+            alert.setContentText("Please select a showtime.");
+            alert.showAndWait();
+        // Check if the number of tickets being purchased is more than 0
+        } else if (ticketSpinner.getEditor().getText().trim().isEmpty() || Integer.parseInt(ticketSpinner.getEditor().getText()) < 1) {
+            alert.setContentText("To make a purchase, you must enter at least 1 ticket.");
+            alert.showAndWait();
+        } else {
+            // Set the number of tickets
+            int nbOfTickets = Integer.parseInt(ticketSpinner.getEditor().getText());
+
+            // Set the ticket data
+            int ticketID = TicketList.getTicketList().size();
+            int clientID = aCurrentUser.getID();
+            LocalDateTime purchaseTime = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
+            Showtime showtime = showtimeTableView.getSelectionModel().getSelectedItem();
+
+            // Loop through the amount of tickets desired by the user, adding it to the ticket list
+            for (int i = 0; i < nbOfTickets; i++) {
+                TicketList.addTicket(new Ticket(ticketID, clientID, purchaseTime, showtime));
+
+                // Increment the ticket ID so that every ID is unique
+                ticketID++;
+            }
+        }
     }
 
     @FXML
@@ -62,9 +89,5 @@ public class ShowtimeListController {
     @FXML
     private void onDeleteButtonClick(){
         System.out.println("onDeleteButtonClick");
-    }
-
-    private void setCurrentUser(User pCurrentUser) {
-        aCurrentUser = pCurrentUser;
     }
 }
