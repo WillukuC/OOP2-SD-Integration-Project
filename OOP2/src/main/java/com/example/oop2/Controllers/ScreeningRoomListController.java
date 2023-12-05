@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import java.io.IOException;
@@ -24,13 +25,13 @@ public class ScreeningRoomListController {
 
     @FXML
     private void onUpdateButtonClick(ActionEvent actionEvent) throws IOException {
-        System.out.println("onUpdateButtonClick");
+        SceneHelper.setCurrentRoomID(screeningRoomListView.getSelectionModel().getSelectedIndex());
         SceneHelper.changeScene("Views/screeningroom-details-view.fxml", actionEvent, "Screening Room Details");
     }
 
     @FXML
     private void onAddButtonClick(ActionEvent actionEvent) throws IOException {
-        System.out.println("onAddButtonClick");
+        SceneHelper.setCurrentRoomID(-1);
         SceneHelper.changeScene("Views/screeningroom-details-view.fxml", actionEvent, "Screening Room Details");
     }
 
@@ -38,11 +39,15 @@ public class ScreeningRoomListController {
     private void onDeleteButtonClick(){
         ScreeningRoom selectedRoom = screeningRoomListView.getSelectionModel().getSelectedItem();
         ScreeningRoomList.removeScreeningList(selectedRoom);
-        initialize();
     }
     @FXML
     public void onCloseButtonClick() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    public void onRefreshButtonClick() {
+        initialize();
     }
 }
