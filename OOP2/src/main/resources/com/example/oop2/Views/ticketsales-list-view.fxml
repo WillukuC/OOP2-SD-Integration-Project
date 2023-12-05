@@ -2,19 +2,18 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="231.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.oop2.Controllers.TicketSalesListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.oop2.Controllers.TicketSalesListController">
    <children>
-      <Label layoutX="20.0" layoutY="14.0" text="Tickets Sold">
+      <Label layoutX="149.0" layoutY="14.0" text="Tickets Sold">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <ListView layoutX="14.0" layoutY="77.0" prefHeight="388.0" prefWidth="200.0" fx:id="ticketSalesListView"/>
-      <Button layoutX="88.0" layoutY="487.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="55.0" text="Exit" onAction="#onExitButtonClick"/>
+      <Button layoutX="215.0" layoutY="306.0" mnemonicParsing="false" onAction="#onExitButtonClick" prefHeight="26.0" prefWidth="55.0" text="Exit" />
+      <TableView layoutX="74.0" layoutY="87.0" prefHeight="200.0" prefWidth="338.0" fx:id="ticketSalesTableView"/>
    </children>
 </AnchorPane>
