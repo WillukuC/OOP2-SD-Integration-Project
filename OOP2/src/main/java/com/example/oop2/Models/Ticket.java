@@ -129,8 +129,7 @@ public class Ticket {
 
     /**
      * Returns the Ticket as a single String
-     * The returned String is formtted as "TicketID,ClientID,PurchaseDateTime,ShowtimeID"
-     *
+     * The returned String is formatted as "TicketID,ClientID,PurchaseDateTime,ShowtimeID"
      * @return The ticket as a single string
      */
     public String toString() {
