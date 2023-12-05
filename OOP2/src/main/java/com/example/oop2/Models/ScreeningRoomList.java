@@ -1,5 +1,7 @@
 package com.example.oop2.Models;
 
+import javafx.collections.FXCollections;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -13,7 +15,9 @@ public class ScreeningRoomList {
     /**
      * The global screening room list
      */
-    private static final List<ScreeningRoom> screeningRoomList = new ArrayList<>();
+//    private static final List<ScreeningRoom> screeningRoomList = new ArrayList<>();
+    private static final List<ScreeningRoom> screeningRoomList = FXCollections.observableArrayList();
+
 
     // Initialization method
     static {

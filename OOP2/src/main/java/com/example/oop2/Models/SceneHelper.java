@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ import java.io.IOException;
 public class SceneHelper {
     private static final SceneHelper sh = new SceneHelper();
     private static User aCurrentUser = null;
+    private static int aCurrentRoomID = -1;
 
     /**
      * changeScene changes to the desired scene by passing the destination, an ActionEvent and a title
@@ -50,5 +52,11 @@ public class SceneHelper {
 
     public static User getCurrentUser() {
         return aCurrentUser;
+    }
+    public static void setCurrentRoomID(int pCurrentRoomID) {
+        aCurrentRoomID = pCurrentRoomID;
+    }
+    public static int getCurrentRoomID() {
+        return aCurrentRoomID;
     }
 }
