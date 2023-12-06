@@ -13,16 +13,26 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-
+/**
+ * Displays the list of showtimes
+ */
 public class ShowtimeListController {
     @FXML
     private Spinner<Integer> ticketSpinner = new Spinner<>();
     private final User aCurrentUser = SceneHelper.getCurrentUser();
     @FXML
     private TableView<Showtime> showtimeTableView;
+
+    /**
+     * Initializes the list of showtimes in the TableView.
+     * Sets the movie, its genre and the day/time it is showing.
+     */
     @FXML
     private void initialize() {
         ticketSpinner.setPromptText("# of tickets");
+
+        showtimeTableView.getColumns().clear();
+        showtimeTableView.getItems().clear();
 
         TableColumn<Showtime, String> movieTitleColumn = new TableColumn<>("Movie Title");
         movieTitleColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getMovie().getTitle()));
@@ -41,6 +51,11 @@ public class ShowtimeListController {
 
         showtimeTableView.getSortOrder().add(showtimeDateColumn);
     }
+
+    /**
+     * Adds a ticket to the ticket list with the ClientID of the logged in client.
+     * If multiple tickets selected, buys multiple.
+     */
     @FXML
     private void onBuyTicketButtonClick(){
         Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -73,18 +88,33 @@ public class ShowtimeListController {
         }
     }
 
+    /**
+     * Opens the Showtime Details controller in order to change the details of a showtime.
+     *
+     * @param actionEvent the button click event
+     * @throws IOException if scene loading fails
+     */
     @FXML
     private void onUpdateButtonClick(ActionEvent actionEvent) throws IOException {
         System.out.println("onUpdateButtonClick");
         SceneHelper.changeScene("Views/showtime-details-view.fxml", actionEvent, "Showtime Details");
     }
 
+    /**
+     * Opens the Showtime Details controller in order to add a new showtime to the list.
+     *
+     * @param actionEvent the button click event
+     * @throws IOException if scene loading fails
+     */
     @FXML
     private void onAddButtonClick(ActionEvent actionEvent) throws IOException{
         System.out.println("onAddButtonClick");
         SceneHelper.changeScene("Views/showtime-details-view.fxml", actionEvent, "Showtime Details");
     }
 
+    /**
+     * Deletes the currently selected showtime from the list.
+     */
     @FXML
     private void onDeleteButtonClick(){
         System.out.println("onDeleteButtonClick");

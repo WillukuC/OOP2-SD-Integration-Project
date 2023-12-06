@@ -10,6 +10,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import java.io.IOException;
 
+/**
+ * Lets the manager enter a showtime's details to be added or updated
+ */
 public class ShowtimeDetailsController {
     @FXML
     private ChoiceBox<Movie> movieChoiceBox;
@@ -20,15 +23,25 @@ public class ShowtimeDetailsController {
     @FXML
     private TextField timeTextField;
 
+    /**
+     * Closes the current window
+     *
+     * @param actionEvent the button click event.
+     * @throws IOException if the scene creation fails.
+     */
     @FXML
     private void onExitButtonClick(ActionEvent actionEvent) throws IOException {
-        System.out.println("onExitButtonClick");
         SceneHelper.closeWindow(timeTextField);
     }
 
+    /**
+     * Saves the showtime data.
+     *
+     * @param actionEvent the button click event.
+     * @throws IOException if the scene creation fails.
+     */
     @FXML
     private void onSaveButtonClick(ActionEvent actionEvent) throws IOException{
-        System.out.println("onSaveButtonClick");
         SceneHelper.closeWindow(timeTextField);
     }
 }
