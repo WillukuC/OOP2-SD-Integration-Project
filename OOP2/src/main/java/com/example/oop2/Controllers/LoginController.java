@@ -9,13 +9,21 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+/**
+ * Application login view
+ */
 public class LoginController {
     @FXML
     private TextField usernameTextField;
-
     @FXML
     private PasswordField passwordTextField;
 
+    /**
+     * On enter, logs the user into the application.
+     *
+     * @param actionEvent the input, either clicking the button or pressing enter.
+     * @throws IOException in case of error when loading scene
+     */
     public void onEnter(ActionEvent actionEvent) throws IOException {
         // Gets the username and password from the text fields
         String username = usernameTextField.getText();
@@ -52,10 +60,14 @@ public class LoginController {
         }
     }
 
+    /**
+     * Opens the client sign-up controller.
+     *
+     * @param pEvent button click event
+     * @throws IOException in case of scene load failure
+     */
     @FXML
     private void onSignUpButtonClick(ActionEvent pEvent) throws IOException {
-        DataHelper.testData();
-        System.out.println("onSignUpButtonClick");
         SceneHelper.changeScene("Views/signup-view.fxml", pEvent, "Sign-Up");
     }
 

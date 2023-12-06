@@ -9,10 +9,16 @@ import javafx.scene.control.TableView;
 import java.lang.String;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Displays the list of tickets that have been sold
+ */
 public class TicketSalesListController {
     @FXML
     private TableView<Ticket> ticketSalesTableView;
 
+    /**
+     * Populates the TableView with all ticket details
+     */
     @FXML
     private void initialize() {
 
@@ -41,7 +47,9 @@ public class TicketSalesListController {
         ticketSalesTableView.getSortOrder().add(ticketIdColumn);
     }
 
-
+    /**
+     * Closes the current window.
+     */
     @FXML
     private void onExitButtonClick(){
         System.out.println("onExitButtonClick");

@@ -5,35 +5,63 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.io.IOException;
 
+/**
+ * Navigation controller for the manager
+ * Allows manager to access all relevant lists
+ */
 public class DashboardController {
-
+    /**
+     * Opens the movie list controller
+     *
+     * @param actionEvent button click
+     * @throws IOException in case of error when loading scene
+     */
     @FXML
     private void onGoMovieButtonClick(ActionEvent actionEvent) throws IOException {
-        System.out.println("onGoMovieButtonClick");
         SceneHelper.changeScene("Views/movie-list-view.fxml", actionEvent, "Movies");
     }
 
+    /**
+     * Opens the showtimes list controller
+     *
+     * @param actionEvent button click
+     * @throws IOException in case of error when loading scene
+     */
     @FXML
     private void onGoShowtimesButtonClick(ActionEvent actionEvent) throws IOException{
-        System.out.println("onGoShowtimesButtonClick");
         SceneHelper.changeScene("Views/showtime-list-view.fxml", actionEvent, "Showtimes");
     }
 
+    /**
+     * Opens the screening rooms list controller
+     *
+     * @param actionEvent button click
+     * @throws IOException in case of error when loading scene
+     */
     @FXML
     private void onGoScreeningRoomsButtonClick(ActionEvent actionEvent) throws IOException {
-        System.out.println("onGoScreeningRoomsButtonClick");
         SceneHelper.changeScene("Views/screeningroom-list-view.fxml", actionEvent, "Screening Rooms");
     }
 
+    /**
+     * Opens the client list controller
+     *
+     * @param actionEvent button click
+     * @throws IOException in case of error when loading scene
+     */
     @FXML
     private void onClientListButtonClick(ActionEvent actionEvent) throws IOException {
-        System.out.println("onClientListButtonClick");
         SceneHelper.changeScene("Views/client-list-view.fxml", actionEvent, "Clients");
     }
 
+    /**
+     * Opens the ticket sales controller
+     *
+     * @param actionEvent button click
+     * @throws IOException in case of error when loading scene
+     */
     @FXML
     private void onTicketSalesButtonClick(ActionEvent actionEvent) throws IOException{
-        System.out.println("onTicketSalesButtonClick");
         SceneHelper.changeScene("Views/ticketsales-list-view.fxml", actionEvent, "Ticket Sales");
     }
 }

@@ -5,20 +5,25 @@ import com.example.oop2.Models.MovieList;
 import com.example.oop2.Models.SceneHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import java.io.IOException;
 
+/**
+ * Lets the manager enter a movie's details to be added or updated
+ */
 public class MovieDetailsController {
     @FXML
     private TextField movieTitleTextField;
     @FXML
     private TextField movieGenreTextField;
-
     private Movie currentMovie;
 
+    /**
+     * Fills the text fields with the movie data if updating,
+     * leaves them empty if adding a new movie.
+     */
     @FXML
     private void initialize() {
         try {
@@ -33,6 +38,12 @@ public class MovieDetailsController {
         }
     }
 
+    /**
+     * If title and genre are present, saves and closes the controller.
+     * If not, shows warning to the user.
+     *
+     * @throws IOException if one or both textFields are empty.
+     */
     @FXML
     private void onSaveButtonClick() throws IOException {
         try {
@@ -50,12 +61,21 @@ public class MovieDetailsController {
             } else {
                 MovieList.updateMovie(SceneHelper.getCurrentMovie(), newMovie);
             }
-        } catch (Exception e) {
 
+            // Successful save, closes window.
+            SceneHelper.closeWindow(movieTitleTextField);
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter both title and genre.");
+            alert.showAndWait();
         }
-        SceneHelper.closeWindow(movieTitleTextField);
     }
 
+    /**
+     * Alerts the user if data has been unsaved and prompts a confirmation.
+     *
+     * @param actionEvent button click action
+     * @throws IOException if loading a scene fails.
+     */
     @FXML
     private void onExitButtonClick(ActionEvent actionEvent) throws IOException{
         if (!movieGenreTextField.getText().trim().isEmpty() || !movieTitleTextField.getText().trim().isEmpty()) {

@@ -8,13 +8,20 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+
 import java.io.IOException;
 
+/**
+ * Lets the manager enter a screening room's details to be added or updated
+ */
 public class ScreeningRoomDetailsController {
     @FXML
     private TextField roomNumberTextField;
     private int currentScreeningRoom = SceneHelper.getCurrentRoomID();
 
+    /**
+     * Sets the text field to the current screening room, if there is one.
+     */
     @FXML
     private void initialize() {
         if (currentScreeningRoom != -1) {
@@ -22,7 +29,13 @@ public class ScreeningRoomDetailsController {
         }
     }
 
-        @FXML
+    /**
+     * Alerts the user if data has been unsaved and prompts a confirmation.
+     *
+     * @param actionEvent button click action
+     * @throws IOException if loading a scene fails.
+     */
+    @FXML
     private void onExitButtonClick(ActionEvent actionEvent) throws IOException {
         if (!roomNumberTextField.getText().trim().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Unsaved data. Are you sure you want to exit?");
@@ -44,6 +57,13 @@ public class ScreeningRoomDetailsController {
         }
     }
 
+    /**
+     * If room number, saves and closes the controller.
+     * If not, shows warning to the user.
+     *
+     * @param actionEvent button click action
+     * @throws IOException if loading a scene fails.
+     */
     @FXML
     private void onSaveButtonClick(ActionEvent actionEvent) throws IOException {
         int roomNumber = Integer.parseInt(roomNumberTextField.getText());

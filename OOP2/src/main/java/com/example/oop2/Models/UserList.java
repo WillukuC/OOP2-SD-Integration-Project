@@ -129,6 +129,12 @@ public class UserList {
         DataHelper.saveData(filePath, header, getUserList());
     }
 
+    /**
+     * Checks the list if the given username exists on the list
+     *
+     * @param pUsername the username to be checked
+     * @return the user the username belongs to if it exists, null if no such user exists
+     */
     public static User getUserByUsername(String pUsername) {
         for (User user : userList) {
             if (pUsername.equals(user.getUsername())) {

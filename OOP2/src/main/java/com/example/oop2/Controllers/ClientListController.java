@@ -6,16 +6,18 @@ import com.example.oop2.Models.UserList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
-
+/**
+ * Displays the list of clients.
+ */
 public class ClientListController {
-
     @FXML
     private ListView<String> clientListview;
-    @FXML
-    private Button closeButton;
+
+    /**
+     * Populates the listView with the usernames of every existing user.
+     */
     @FXML
     public void initialize() {
         ObservableList<String> clientList = FXCollections.observableArrayList();
@@ -26,6 +28,10 @@ public class ClientListController {
         }
         clientListview.setItems(clientList);
     }
+
+    /**
+     * Closes the window.
+     */
     @FXML
     private void onCloseButtonClick(){
         SceneHelper.closeWindow(clientListview);

@@ -16,9 +16,21 @@ import java.io.IOException;
  * You can use changeScene and closeWindow to manage scenes
  */
 public class SceneHelper {
+    /**
+     * The SceneHelper class
+     */
     private static final SceneHelper sh = new SceneHelper();
+    /**
+     * The application's current user
+     */
     private static User aCurrentUser = null;
+    /**
+     * The id of the room currently being edited
+     */
     private static int aCurrentRoomID = -1;
+    /**
+     * The id of the movie currently being edited
+     */
     private static int aCurrentMovie = -1;
 
     /**
@@ -47,22 +59,55 @@ public class SceneHelper {
         stage.close();
     }
 
+    /**
+     * Sets the current user
+     *
+     * @param pCurrentUser the logged-in user
+     */
     public static void setCurrentUser(User pCurrentUser) {
         aCurrentUser = pCurrentUser;
     }
 
+    /**
+     * Gets the current user
+     *
+     * @return the logged-in user
+     */
     public static User getCurrentUser() {
         return aCurrentUser;
     }
+    /**
+     * Sets the edited room ID
+     *
+     * @param pCurrentRoomID the ID of the room being edited
+     */
     public static void setCurrentRoomID(int pCurrentRoomID) {
         aCurrentRoomID = pCurrentRoomID;
     }
+
+    /**
+     * Gets the ID of the room being edited
+     *
+     * @return the ID of the current room being edited
+     */
     public static int getCurrentRoomID() {
         return aCurrentRoomID;
     }
+
+    /**
+     * Sets the current movie ID
+     *
+     * @param pCurrentMovie the ID of the movie being edited
+     */
     public static void setCurrentMovie(int pCurrentMovie) {
         aCurrentMovie = pCurrentMovie;
     }
+
+    /**
+     * Gets the current movie ID
+     *
+     * @return the ID of the movie being edited
+     */
     public static int getCurrentMovie() {
         return aCurrentMovie;
     }
