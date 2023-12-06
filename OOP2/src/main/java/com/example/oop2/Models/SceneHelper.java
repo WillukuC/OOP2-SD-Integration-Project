@@ -19,6 +19,7 @@ public class SceneHelper {
     private static final SceneHelper sh = new SceneHelper();
     private static User aCurrentUser = null;
     private static int aCurrentRoomID = -1;
+    private static int aCurrentMovie = -1;
 
     /**
      * changeScene changes to the desired scene by passing the destination, an ActionEvent and a title
@@ -58,5 +59,11 @@ public class SceneHelper {
     }
     public static int getCurrentRoomID() {
         return aCurrentRoomID;
+    }
+    public static void setCurrentMovie(int pCurrentMovie) {
+        aCurrentMovie = pCurrentMovie;
+    }
+    public static int getCurrentMovie() {
+        return aCurrentMovie;
     }
 }

@@ -16,6 +16,13 @@ public class ScreeningRoomDetailsController {
     private int currentScreeningRoom = SceneHelper.getCurrentRoomID();
 
     @FXML
+    private void initialize() {
+        if (currentScreeningRoom != -1) {
+            roomNumberTextField.setText(Integer.toString(currentScreeningRoom));
+        }
+    }
+
+        @FXML
     private void onExitButtonClick(ActionEvent actionEvent) throws IOException {
         if (!roomNumberTextField.getText().trim().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Unsaved data. Are you sure you want to exit?");
@@ -49,6 +56,5 @@ public class ScreeningRoomDetailsController {
         }
 
         SceneHelper.closeWindow(roomNumberTextField);
-
     }
 }

@@ -107,4 +107,8 @@ public class MovieList {
         String header = "Title,Genre";
         DataHelper.saveData(filePath, header, getMovieList());
     }
+
+    public static Movie getMovieByIndex(int i) {
+        return movieList.get(i);
+    }
 }
