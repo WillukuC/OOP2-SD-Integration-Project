@@ -35,11 +35,13 @@ public class ScreeningRoomList {
                 // Executes if line is not null AND is not empty/whitespace
                 while (line != null) {
                     if (!line.trim().isEmpty()) {
-                        // Gets the line as the room's number
-                        // and adds it to the screening room list.
-                        int roomNumber = Integer.parseInt(line);
-                        ScreeningRoom screeningRoom = new ScreeningRoom(roomNumber);
-                        addScreeningRoom(screeningRoom);
+                        try {
+                            // Gets the line as the room's number
+                            // and adds it to the screening room list.
+                            int roomNumber = Integer.parseInt(line);
+                            ScreeningRoom screeningRoom = new ScreeningRoom(roomNumber);
+                            addScreeningRoom(screeningRoom);
+                        } catch (Exception ignored) { }
                     }
                     line = br.readLine();
                 }

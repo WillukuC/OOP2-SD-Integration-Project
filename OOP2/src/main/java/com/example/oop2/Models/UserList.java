@@ -32,30 +32,32 @@ public class UserList {
                 // Executes if line is not null AND is not empty/whitespace
                 while (line != null) {
                     if (!line.trim().isEmpty()) {
-                        // Splits the line into a user's id, username, email, join date, password and manager status
-                        // and adds it to the user list.
-                        String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                        try {
+                            // Splits the line into a user's id, username, email, join date, password and manager status
+                            // and adds it to the user list.
+                            String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
-                        // Get user ID
-                        int userID = Integer.parseInt(attributes[0]);
+                            // Get user ID
+                            int userID = Integer.parseInt(attributes[0]);
 
-                        // Get username
-                        String username = attributes[1];
+                            // Get username
+                            String username = attributes[1];
 
-                        // Get email
-                        String email = attributes[2];
+                            // Get email
+                            String email = attributes[2];
 
-                        // Get DateTime joined
-                        LocalDateTime joinDateTime = LocalDateTime.parse(attributes[3]);
+                            // Get DateTime joined
+                            LocalDateTime joinDateTime = LocalDateTime.parse(attributes[3]);
 
-                        // Get Password
-                        String password = attributes[4];
+                            // Get Password
+                            String password = attributes[4];
 
-                        // Get isManager
-                        boolean isManager = Boolean.parseBoolean(attributes[5]);
+                            // Get isManager
+                            boolean isManager = Boolean.parseBoolean(attributes[5]);
 
-                        User user = new User(userID, username, email, joinDateTime, password, isManager);
-                        addUser(user);
+                            User user = new User(userID, username, email, joinDateTime, password, isManager);
+                            addUser(user);
+                        } catch (Exception ignored) { }
                     }
                     line = br.readLine();
                 }

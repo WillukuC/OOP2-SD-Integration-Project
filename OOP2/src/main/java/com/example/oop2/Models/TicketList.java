@@ -32,30 +32,32 @@ public class TicketList {
                 // Executes if line is not null AND is not empty/whitespace
                 while (line != null) {
                     if (!line.trim().isEmpty()) {
-                        // Splits the line into a ticket's id, client, purchase date, and showtime
-                        // and adds it to the ticket list.
-                        String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                        try {
+                            // Splits the line into a ticket's id, client, purchase date, and showtime
+                            // and adds it to the ticket list.
+                            String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
-                        // Get ticket ID
-                        int ticketID = Integer.parseInt(attributes[0]);
+                            // Get ticket ID
+                            int ticketID = Integer.parseInt(attributes[0]);
 
-                        // Get client ID
-                        int clientID = Integer.parseInt(attributes[1]);
+                            // Get client ID
+                            int clientID = Integer.parseInt(attributes[1]);
 
-                        // Get ticket purchase DateTime
-                        LocalDateTime purchaseDateTime = LocalDateTime.parse(attributes[2]);
+                            // Get ticket purchase DateTime
+                            LocalDateTime purchaseDateTime = LocalDateTime.parse(attributes[2]);
 
-                        // Get showtime
-                        Showtime ticketShowtime = null;
-                        for (Showtime showtime : ShowtimeList.getShowtimeList()) {
-                            if (showtime.getID() == Integer.parseInt(attributes[3])) {
-                                ticketShowtime = showtime;
-                                break;
+                            // Get showtime
+                            Showtime ticketShowtime = null;
+                            for (Showtime showtime : ShowtimeList.getShowtimeList()) {
+                                if (showtime.getID() == Integer.parseInt(attributes[3])) {
+                                    ticketShowtime = showtime;
+                                    break;
+                                }
                             }
-                        }
 
-                        Ticket ticket = new Ticket(ticketID, clientID, purchaseDateTime, ticketShowtime);
-                        addTicket(ticket);
+                            Ticket ticket = new Ticket(ticketID, clientID, purchaseDateTime, ticketShowtime);
+                            addTicket(ticket);
+                        } catch (Exception ignored) { }
                     }
                     line = br.readLine();
                 }

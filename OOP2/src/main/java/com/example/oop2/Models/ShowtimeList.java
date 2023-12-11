@@ -32,36 +32,38 @@ public class ShowtimeList {
                 // Executes if line is not null AND is not empty/whitespace
                 while (line != null) {
                     if (!line.trim().isEmpty()) {
-                        // Splits the line into a showtime's id, date, and movie
-                        // and adds it to the showtime list.
-                        String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                        try {
+                            // Splits the line into a showtime's id, date, and movie
+                            // and adds it to the showtime list.
+                            String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
-                        // Get showtime ID
-                        int showtimeID = Integer.parseInt(attributes[0]);
+                            // Get showtime ID
+                            int showtimeID = Integer.parseInt(attributes[0]);
 
-                        // Get showtime DateTime
-                        LocalDateTime showtimeDateTime = LocalDateTime.parse(attributes[1]);
+                            // Get showtime DateTime
+                            LocalDateTime showtimeDateTime = LocalDateTime.parse(attributes[1]);
 
-                        // Get showtime Movie
-                        Movie showtimeMovie = null;
-                        for (Movie movie : MovieList.getMovieList()) {
-                            if (movie.getTitle().equals(attributes[2])) {
-                                showtimeMovie = movie;
-                                break;
+                            // Get showtime Movie
+                            Movie showtimeMovie = null;
+                            for (Movie movie : MovieList.getMovieList()) {
+                                if (movie.getTitle().equals(attributes[2])) {
+                                    showtimeMovie = movie;
+                                    break;
+                                }
                             }
-                        }
 
-                        // Get showtime ScreeningRoom
-                        ScreeningRoom showtimeRoom = null;
-                        for (ScreeningRoom screeningRoom : ScreeningRoomList.getScreeningRoomList()) {
-                            if (screeningRoom.toString().equals(attributes[3])) {
-                                showtimeRoom = screeningRoom;
-                                break;
+                            // Get showtime ScreeningRoom
+                            ScreeningRoom showtimeRoom = null;
+                            for (ScreeningRoom screeningRoom : ScreeningRoomList.getScreeningRoomList()) {
+                                if (screeningRoom.toString().equals(attributes[3])) {
+                                    showtimeRoom = screeningRoom;
+                                    break;
+                                }
                             }
-                        }
 
-                        Showtime showtime = new Showtime(showtimeID, showtimeDateTime, showtimeMovie, showtimeRoom);
-                        addShowtime(showtime);
+                            Showtime showtime = new Showtime(showtimeID, showtimeDateTime, showtimeMovie, showtimeRoom);
+                            addShowtime(showtime);
+                        } catch (Exception ignored) { }
                     }
                     line = br.readLine();
                 }

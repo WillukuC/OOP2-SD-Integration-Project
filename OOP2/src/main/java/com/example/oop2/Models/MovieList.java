@@ -31,11 +31,13 @@ public class MovieList {
                 // Executes if line is not null AND is not empty/whitespace
                 while (line != null) {
                     if (!line.trim().isEmpty()) {
-                        // Splits the line into a movie's title and genre
-                        // and adds it to the movie list.
-                        String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
-                        Movie movie = new Movie(attributes[0], attributes[1]);
-                        addMovie(movie);
+                        try {
+                            // Splits the line into a movie's title and genre
+                            // and adds it to the movie list.
+                            String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                            Movie movie = new Movie(attributes[0], attributes[1]);
+                            addMovie(movie);
+                        } catch (Exception ignored) { }
                     }
                     line = br.readLine();
                 }
