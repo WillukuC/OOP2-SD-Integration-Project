@@ -89,10 +89,13 @@ public class ShowtimeDetailsController {
      */
     @FXML
     private void onSaveButtonClick(ActionEvent actionEvent) throws IOException{
-        //check if the date chosen by the user is
+        //check if the date chosen by the user is for the future
         if (!movieDateDatePicker.getValue().isBefore(LocalDate.now())) {
+            //checks if the time in the text field is valid and in a valid format
             if (isValidTime(timeTextField.getText())){
+                //checks if there is a movie chosen
                 if (!movieChoiceBox.getSelectionModel().isEmpty()) {
+                    //checks if there is a screening room chosen
                     if (!screeningRoomChoiceBox.getSelectionModel().isEmpty()){
                         System.out.println("success");
 
