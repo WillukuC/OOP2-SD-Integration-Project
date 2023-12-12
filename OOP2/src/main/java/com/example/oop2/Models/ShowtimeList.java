@@ -134,4 +134,8 @@ public class ShowtimeList {
         String header = "ShowtimeID,DateTime,Movie,ScreeningRoom";
         DataHelper.saveData(filePath, header, getShowtimeList());
     }
+
+    public static Showtime getShowtimeByIndex(int i) {
+        return showtimeList.get(i);
+    }
 }

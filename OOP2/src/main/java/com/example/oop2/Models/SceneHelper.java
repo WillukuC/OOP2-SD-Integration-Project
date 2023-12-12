@@ -32,6 +32,10 @@ public class SceneHelper {
      * The id of the movie currently being edited
      */
     private static int aCurrentMovie = -1;
+    /**
+     * The id of the showtime currently being edited
+     */
+    private static int aCurrentShowtime = -1;
 
     /**
      * changeScene changes to the desired scene by passing the destination, an ActionEvent and a title
@@ -110,5 +114,23 @@ public class SceneHelper {
      */
     public static int getCurrentMovie() {
         return aCurrentMovie;
+    }
+
+    /**
+     * Sets the current showtime ID
+     *
+     * @param pCurrentShowtime the ID of the showtime being edited
+     */
+    public static void setCurrentShowtime(int pCurrentShowtime) {
+        aCurrentShowtime = pCurrentShowtime;
+    }
+
+    /**
+     * Gets the current showtime ID
+     *
+     * @return the ID of the showtime being edited
+     */
+    public static int getCurrentShowtime() {
+        return aCurrentShowtime;
     }
 }

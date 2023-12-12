@@ -49,6 +49,7 @@ public class LoginController {
                 alert.showAndWait();
             } else {
                 if (user.isManager()) {
+                    SceneHelper.setCurrentUser(user);
                     SceneHelper.closeWindow(passwordTextField);
                     SceneHelper.changeScene("Views/dashboard-view.fxml", actionEvent, "Dashboard");
                 } else {

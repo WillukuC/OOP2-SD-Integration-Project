@@ -4,10 +4,8 @@ import com.example.oop2.Models.*;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -17,6 +15,12 @@ import java.time.temporal.ChronoUnit;
  * Displays the list of showtimes
  */
 public class ShowtimeListController {
+    @FXML
+    private Button updateButton;
+    @FXML
+    private Button deleteButton;
+    @FXML
+    private Button addButton;
     @FXML
     private Spinner<Integer> ticketSpinner = new Spinner<>();
     private final User aCurrentUser = SceneHelper.getCurrentUser();
@@ -50,6 +54,24 @@ public class ShowtimeListController {
         showtimeTableView.getItems().addAll(ShowtimeList.getShowtimeList());
 
         showtimeTableView.getSortOrder().add(showtimeDateColumn);
+
+        if (!aCurrentUser.isManager()) {
+            //if the current user is not a manager, hide all CRUD buttons and disable them
+            updateButton.setDisable(true);
+            updateButton.setOpacity(0);
+            deleteButton.setDisable(true);
+            deleteButton.setOpacity(0);
+            addButton.setDisable(true);
+            addButton.setOpacity(0);
+        } else {
+            //if the current user is a manager, show all CRUD buttons and enable them
+            updateButton.setDisable(false);
+            updateButton.setOpacity(1);
+            deleteButton.setDisable(false);
+            deleteButton.setOpacity(1);
+            addButton.setDisable(false);
+            addButton.setOpacity(1);
+        }
     }
 
     /**
@@ -97,6 +119,7 @@ public class ShowtimeListController {
     @FXML
     private void onUpdateButtonClick(ActionEvent actionEvent) throws IOException {
         System.out.println("onUpdateButtonClick");
+        SceneHelper.setCurrentShowtime(showtimeTableView.getSelectionModel().getSelectedIndex());
         SceneHelper.changeScene("Views/showtime-details-view.fxml", actionEvent, "Showtime Details");
     }
 
@@ -118,5 +141,6 @@ public class ShowtimeListController {
     @FXML
     private void onDeleteButtonClick(){
         System.out.println("onDeleteButtonClick");
+
     }
 }
