@@ -78,8 +78,9 @@ public class MovieDetailsController {
     @FXML
     private void onExitButtonClick(ActionEvent actionEvent) throws IOException{
         if (!movieGenreTextField.getText().trim().isEmpty() || !movieTitleTextField.getText().trim().isEmpty()) {
-            SceneHelper.unsavedClose(movieGenreTextField);
-
+            if (SceneHelper.checkWithUser("Changes haven't been saved\nContinue?")) {
+                SceneHelper.closeWindow(movieGenreTextField);
+            }
         } else {
             SceneHelper.closeWindow(movieTitleTextField);
         }

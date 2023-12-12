@@ -16,6 +16,8 @@ import java.time.temporal.ChronoUnit;
  */
 public class ShowtimeListController {
     @FXML
+    private Button purchaseButton;
+    @FXML
     private Button updateButton;
     @FXML
     private Button deleteButton;
@@ -64,13 +66,12 @@ public class ShowtimeListController {
             addButton.setDisable(true);
             addButton.setOpacity(0);
         } else {
-            //if the current user is a manager, show all CRUD buttons and enable them
-            updateButton.setDisable(false);
-            updateButton.setOpacity(1);
-            deleteButton.setDisable(false);
-            deleteButton.setOpacity(1);
-            addButton.setDisable(false);
-            addButton.setOpacity(1);
+            //if the current user is a manager, hide all "buy ticket" controllers
+
+            purchaseButton.setOpacity(0);
+            purchaseButton.setDisable(true);
+            ticketSpinner.setOpacity(0);
+            ticketSpinner.setDisable(true);
         }
     }
 
@@ -135,7 +136,9 @@ public class ShowtimeListController {
      */
     @FXML
     private void onDeleteButtonClick(){
-        System.out.println("onDeleteButtonClick");
-
+        if (SceneHelper.checkWithUser("Are you sure you want to delete this item")) {
+            ShowtimeList.removeShowtime(showtimeTableView.getItems().get(showtimeTableView.getSelectionModel().getSelectedIndex()));
+            initialize();
+        }
     }
 }

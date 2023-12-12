@@ -66,7 +66,9 @@ public class MovieListController {
      */
     @FXML
     private void onDeleteButtonClick(){
-        MovieList.removeMovie(movieTableView.getItems().get(movieTableView.getSelectionModel().getSelectedIndex()));
+        if (SceneHelper.checkWithUser("Are you sure you want to delete this item")) {
+            MovieList.removeMovie(movieTableView.getItems().get(movieTableView.getSelectionModel().getSelectedIndex()));
+        }
     }
 
     /**

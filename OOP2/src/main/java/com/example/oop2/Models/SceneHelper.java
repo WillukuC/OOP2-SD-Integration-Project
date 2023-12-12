@@ -12,6 +12,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Utility class for managing scenes
@@ -65,20 +66,23 @@ public class SceneHelper {
         stage.close();
     }
 
-    public static void unsavedClose(Node node) {
-        Alert alert = new Alert(Alert.AlertType.WARNING, "Unsaved data. Are you sure you want to exit?");
+    public static boolean checkWithUser(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING, message);
 
-        ButtonType buttonTypeExit = new ButtonType("Exit");
+        ButtonType buttonTypeExit = new ButtonType("Continue");
         ButtonType buttonTypeCancel = new ButtonType("Cancel");
 
         alert.getButtonTypes().setAll(buttonTypeExit, buttonTypeCancel);
 
+        AtomicBoolean returnValue = new AtomicBoolean(false);
+
         alert.showAndWait().ifPresent(buttonType -> {
             if (buttonType == buttonTypeExit) {
                 alert.close();
-                SceneHelper.closeWindow(node);
+                returnValue.set(true);
             }
         });
+        return returnValue.get();
     }
 
     public static void errorMessage(String message) {

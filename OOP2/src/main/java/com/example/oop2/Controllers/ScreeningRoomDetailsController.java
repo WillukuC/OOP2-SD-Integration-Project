@@ -38,8 +38,9 @@ public class ScreeningRoomDetailsController {
     @FXML
     private void onExitButtonClick(ActionEvent actionEvent) throws IOException {
         if (!roomNumberTextField.getText().trim().isEmpty()) {
-            SceneHelper.unsavedClose(roomNumberTextField);
-
+            if (SceneHelper.checkWithUser("Changes haven't been saved\nContinue?")) {
+                SceneHelper.closeWindow(roomNumberTextField);
+            }
         } else {
             SceneHelper.closeWindow(roomNumberTextField);
         }

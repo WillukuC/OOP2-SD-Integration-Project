@@ -70,12 +70,15 @@ public class ShowtimeDetailsController {
      */
     @FXML
     private void onExitButtonClick(ActionEvent actionEvent) throws IOException {
+        //checks if any of the nodes have a values to give a warning message in case of unsaved changes
         if (!timeTextField.getText().trim().isEmpty() ||
             movieDateDatePicker.getValue() != null ||
             !screeningRoomChoiceBox.getSelectionModel().isEmpty() ||
             !movieChoiceBox.getSelectionModel().isEmpty())
         {
-            SceneHelper.unsavedClose(timeTextField);
+            if (SceneHelper.checkWithUser("Changes haven't been saved\nContinue?")) {
+                SceneHelper.closeWindow(timeTextField);
+            }
         } else {
             SceneHelper.closeWindow(timeTextField);
         }
@@ -99,6 +102,7 @@ public class ShowtimeDetailsController {
                     if (!screeningRoomChoiceBox.getSelectionModel().isEmpty()){
                         System.out.println("success");
 
+                        //creates new values to initialize a new showtime and insert it into the list
                         int showtimeID = ShowtimeList.getShowtimeList().size();
                         LocalDateTime showtimeDateTime = LocalDateTime.parse( movieDateDatePicker.getValue().toString() + " " + timeTextField.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
                         Movie showtimeMovie = MovieList.getMovieByIndex(movieChoiceBox.getSelectionModel().getSelectedIndex());
@@ -106,6 +110,7 @@ public class ShowtimeDetailsController {
 
                         Showtime newShowtime = new Showtime(showtimeID, showtimeDateTime, showtimeMovie, showtimeRoom);
 
+                        //checks adds or updates the list depending on if the add or update button was pressed on the previous screen
                         if (currentShowtime == null) {
                             ShowtimeList.addShowtime(newShowtime);
                         } else {
@@ -132,6 +137,11 @@ public class ShowtimeDetailsController {
 
     }
 
+    /**
+     *
+     * @param time the text from the timeTextField
+     * @return true if the time is in the right format, false if not
+     */
     private static boolean isValidTime(String time) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
