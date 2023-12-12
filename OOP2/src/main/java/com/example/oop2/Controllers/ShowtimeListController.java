@@ -80,16 +80,13 @@ public class ShowtimeListController {
      */
     @FXML
     private void onBuyTicketButtonClick(){
-        Alert alert = new Alert(Alert.AlertType.WARNING);
 
         // Check if there is a selected showtime
         if (showtimeTableView.getSelectionModel().getSelectedIndex() == -1) {
-            alert.setContentText("Please select a showtime.");
-            alert.showAndWait();
+            SceneHelper.errorMessage("Please select a showtime.");
         // Check if the number of tickets being purchased is more than 0
         } else if (ticketSpinner.getEditor().getText().trim().isEmpty() || Integer.parseInt(ticketSpinner.getEditor().getText()) < 1) {
-            alert.setContentText("To make a purchase, you must enter at least 1 ticket.");
-            alert.showAndWait();
+            SceneHelper.errorMessage("To make a purchase, you must enter at least 1 ticket.");
         } else {
             // Set the number of tickets
             int nbOfTickets = Integer.parseInt(ticketSpinner.getEditor().getText());
@@ -118,7 +115,6 @@ public class ShowtimeListController {
      */
     @FXML
     private void onUpdateButtonClick(ActionEvent actionEvent) throws IOException {
-        System.out.println("onUpdateButtonClick");
         SceneHelper.setCurrentShowtime(showtimeTableView.getSelectionModel().getSelectedIndex());
         SceneHelper.changeScene("Views/showtime-details-view.fxml", actionEvent, "Showtime Details");
     }
@@ -131,7 +127,6 @@ public class ShowtimeListController {
      */
     @FXML
     private void onAddButtonClick(ActionEvent actionEvent) throws IOException{
-        System.out.println("onAddButtonClick");
         SceneHelper.changeScene("Views/showtime-details-view.fxml", actionEvent, "Showtime Details");
     }
 

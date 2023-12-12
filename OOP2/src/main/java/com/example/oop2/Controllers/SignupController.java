@@ -25,16 +25,13 @@ public class SignupController {
      */
     @FXML
     private void onRegisterButtonClick() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
         try {
             if (emailTextField.getText().trim().isEmpty() || !emailTextField.getText().contains("@") || !emailTextField.getText().contains(".")) {
-                alert.setContentText("Please enter a valid email address.");
-                alert.showAndWait();
+                SceneHelper.errorMessage("Please enter a valid email address.");
             } else if (nameTextField.getText().trim().isEmpty()) {
-                alert.setContentText("Please enter a username.");
-                alert.showAndWait();
+                SceneHelper.errorMessage("Please enter a username.");
             } else if (passwordTextField.getText().trim().isEmpty()) {
-                alert.setContentText("Please enter a password.");
+                SceneHelper.errorMessage("Please enter a password.");
             } else {
                 int newUserID = UserList.getUserList().size();
                 String newUsername = nameTextField.getText();
@@ -47,7 +44,7 @@ public class SignupController {
                 SceneHelper.closeWindow(passwordTextField);
             }
         } catch (Exception e) {
-            alert.setContentText("Unexpected error.");
+            SceneHelper.errorMessage("Unexpected error.");
         }
     }
 }

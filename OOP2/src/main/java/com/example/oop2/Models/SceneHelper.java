@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -61,6 +63,28 @@ public class SceneHelper {
     public static void closeWindow(Node node) {
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
+    }
+
+    public static void unsavedClose(Node node) {
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Unsaved data. Are you sure you want to exit?");
+
+        ButtonType buttonTypeExit = new ButtonType("Exit");
+        ButtonType buttonTypeCancel = new ButtonType("Cancel");
+
+        alert.getButtonTypes().setAll(buttonTypeExit, buttonTypeCancel);
+
+        alert.showAndWait().ifPresent(buttonType -> {
+            if (buttonType == buttonTypeExit) {
+                alert.close();
+                SceneHelper.closeWindow(node);
+            }
+        });
+    }
+
+    public static void errorMessage(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Warning");
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     /**
@@ -124,6 +148,7 @@ public class SceneHelper {
     public static void setCurrentShowtime(int pCurrentShowtime) {
         aCurrentShowtime = pCurrentShowtime;
     }
+
 
     /**
      * Gets the current showtime ID

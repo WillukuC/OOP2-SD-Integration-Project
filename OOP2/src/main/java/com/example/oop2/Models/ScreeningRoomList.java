@@ -112,4 +112,8 @@ public class ScreeningRoomList {
         String header = "RoomNumber";
         DataHelper.saveData(filePath, header, getScreeningRoomList());
     }
+
+    public static ScreeningRoom getRoomByIndex(int i) {
+        return screeningRoomList.get(i);
+    }
 }

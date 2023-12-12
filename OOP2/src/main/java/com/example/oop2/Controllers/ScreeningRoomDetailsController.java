@@ -38,19 +38,7 @@ public class ScreeningRoomDetailsController {
     @FXML
     private void onExitButtonClick(ActionEvent actionEvent) throws IOException {
         if (!roomNumberTextField.getText().trim().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Unsaved data. Are you sure you want to exit?");
-
-            ButtonType buttonTypeExit = new ButtonType("Exit");
-            ButtonType buttonTypeCancel = new ButtonType("Cancel");
-
-            alert.getButtonTypes().setAll(buttonTypeExit, buttonTypeCancel);
-
-            alert.showAndWait().ifPresent(buttonType -> {
-                if (buttonType == buttonTypeExit) {
-                    alert.close();
-                    SceneHelper.closeWindow(roomNumberTextField);
-                }
-            });
+            SceneHelper.unsavedClose(roomNumberTextField);
 
         } else {
             SceneHelper.closeWindow(roomNumberTextField);
