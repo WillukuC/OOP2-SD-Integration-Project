@@ -24,6 +24,8 @@ public class ShowtimeListController {
     @FXML
     private Button addButton;
     @FXML
+    private Button refreshButton;
+    @FXML
     private Spinner<Integer> ticketSpinner = new Spinner<>();
     private final User aCurrentUser = SceneHelper.getCurrentUser();
     @FXML
@@ -65,6 +67,8 @@ public class ShowtimeListController {
             deleteButton.setOpacity(0);
             addButton.setDisable(true);
             addButton.setOpacity(0);
+            refreshButton.setOpacity(0);
+            refreshButton.setDisable(true);
         } else {
             //if the current user is a manager, hide all "buy ticket" controllers
 
@@ -116,8 +120,12 @@ public class ShowtimeListController {
      */
     @FXML
     private void onUpdateButtonClick(ActionEvent actionEvent) throws IOException {
-        SceneHelper.setCurrentShowtime(showtimeTableView.getSelectionModel().getSelectedIndex());
-        SceneHelper.changeScene("Views/showtime-details-view.fxml", actionEvent, "Showtime Details");
+        if (!showtimeTableView.getSelectionModel().isEmpty()) {
+            SceneHelper.setCurrentShowtime(showtimeTableView.getSelectionModel().getSelectedIndex());
+            SceneHelper.changeScene("Views/showtime-details-view.fxml", actionEvent, "Showtime Details");
+        } else {
+            SceneHelper.errorMessage("You haven't selected anything to update");
+        }
     }
 
     /**
@@ -136,9 +144,18 @@ public class ShowtimeListController {
      */
     @FXML
     private void onDeleteButtonClick(){
-        if (SceneHelper.checkWithUser("Are you sure you want to delete this item")) {
-            ShowtimeList.removeShowtime(showtimeTableView.getItems().get(showtimeTableView.getSelectionModel().getSelectedIndex()));
-            initialize();
+        if (!showtimeTableView.getSelectionModel().isEmpty()) {
+            if (SceneHelper.checkWithUser("Are you sure you want to delete this item")) {
+                ShowtimeList.removeShowtime(showtimeTableView.getItems().get(showtimeTableView.getSelectionModel().getSelectedIndex()));
+                initialize();
+            }
+        } else {
+            SceneHelper.errorMessage("You haven't selected anything to delete");
         }
+    }
+
+    @FXML
+    private void onRefreshButtonClick() {
+
     }
 }
