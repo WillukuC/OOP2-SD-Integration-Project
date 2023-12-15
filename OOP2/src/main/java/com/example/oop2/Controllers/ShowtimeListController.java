@@ -109,6 +109,14 @@ public class ShowtimeListController {
                 // Increment the ticket ID so that every ID is unique
                 ticketID++;
             }
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Ticket bought");
+            alert.setContentText(
+                    "You have bought tickets for " + showtime.getMovie().getTitle() +
+                            "\n The film starts on " + showtime.getDateTime().format(formatter)
+            );
+            alert.showAndWait();
         }
     }
 
