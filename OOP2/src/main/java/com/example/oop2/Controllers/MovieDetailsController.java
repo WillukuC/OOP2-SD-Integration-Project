@@ -5,8 +5,6 @@ import com.example.oop2.Models.MovieList;
 import com.example.oop2.Models.SceneHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import java.io.IOException;
 

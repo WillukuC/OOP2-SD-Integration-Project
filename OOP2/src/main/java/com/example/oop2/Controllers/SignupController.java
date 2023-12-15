@@ -4,7 +4,6 @@ import com.example.oop2.Models.SceneHelper;
 import com.example.oop2.Models.User;
 import com.example.oop2.Models.UserList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import java.time.LocalDateTime;
 

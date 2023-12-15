@@ -3,8 +3,6 @@ package com.example.oop2.Controllers;
 import com.example.oop2.Models.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 

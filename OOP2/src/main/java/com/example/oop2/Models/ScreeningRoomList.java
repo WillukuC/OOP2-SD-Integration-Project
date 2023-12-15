@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +14,6 @@ public class ScreeningRoomList {
     /**
      * The global screening room list
      */
-//    private static final List<ScreeningRoom> screeningRoomList = new ArrayList<>();
     private static final List<ScreeningRoom> screeningRoomList = FXCollections.observableArrayList();
 
 
