@@ -59,8 +59,10 @@ public class ScreeningRoomListController {
      */
     @FXML
     private void onDeleteButtonClick(){
-        ScreeningRoom selectedRoom = screeningRoomListView.getSelectionModel().getSelectedItem();
-        ScreeningRoomList.removeScreeningList(selectedRoom);
+        if (SceneHelper.checkWithUser("Are you sure you want to delete this item")) {
+            ScreeningRoom selectedRoom = screeningRoomListView.getSelectionModel().getSelectedItem();
+            ScreeningRoomList.removeScreeningList(selectedRoom);
+        }
     }
 
     /**

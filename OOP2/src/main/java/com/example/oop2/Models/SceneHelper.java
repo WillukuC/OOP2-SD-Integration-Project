@@ -5,11 +5,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Utility class for managing scenes
@@ -32,6 +35,10 @@ public class SceneHelper {
      * The id of the movie currently being edited
      */
     private static int aCurrentMovie = -1;
+    /**
+     * The id of the showtime currently being edited
+     */
+    private static int aCurrentShowtime = -1;
 
     /**
      * changeScene changes to the desired scene by passing the destination, an ActionEvent and a title
@@ -57,6 +64,31 @@ public class SceneHelper {
     public static void closeWindow(Node node) {
         Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
+    }
+
+    public static boolean checkWithUser(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING, message);
+
+        ButtonType buttonTypeExit = new ButtonType("Continue");
+        ButtonType buttonTypeCancel = new ButtonType("Cancel");
+
+        alert.getButtonTypes().setAll(buttonTypeExit, buttonTypeCancel);
+
+        AtomicBoolean returnValue = new AtomicBoolean(false);
+
+        alert.showAndWait().ifPresent(buttonType -> {
+            if (buttonType == buttonTypeExit) {
+                alert.close();
+                returnValue.set(true);
+            }
+        });
+        return returnValue.get();
+    }
+
+    public static void errorMessage(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Warning");
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     /**
@@ -110,5 +142,24 @@ public class SceneHelper {
      */
     public static int getCurrentMovie() {
         return aCurrentMovie;
+    }
+
+    /**
+     * Sets the current showtime ID
+     *
+     * @param pCurrentShowtime the ID of the showtime being edited
+     */
+    public static void setCurrentShowtime(int pCurrentShowtime) {
+        aCurrentShowtime = pCurrentShowtime;
+    }
+
+
+    /**
+     * Gets the current showtime ID
+     *
+     * @return the ID of the showtime being edited
+     */
+    public static int getCurrentShowtime() {
+        return aCurrentShowtime;
     }
 }

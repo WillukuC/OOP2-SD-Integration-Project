@@ -65,8 +65,7 @@ public class MovieDetailsController {
             // Successful save, closes window.
             SceneHelper.closeWindow(movieTitleTextField);
         } catch (Exception e) {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter both title and genre.");
-            alert.showAndWait();
+            SceneHelper.errorMessage("Please enter both title and genre.");
         }
     }
 
@@ -79,21 +78,11 @@ public class MovieDetailsController {
     @FXML
     private void onExitButtonClick(ActionEvent actionEvent) throws IOException{
         if (!movieGenreTextField.getText().trim().isEmpty() || !movieTitleTextField.getText().trim().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Unsaved data. Are you sure you want to exit?");
-
-            ButtonType buttonTypeExit = new ButtonType("Exit");
-            ButtonType buttonTypeCancel = new ButtonType("Cancel");
-
-            alert.getButtonTypes().setAll(buttonTypeExit, buttonTypeCancel);
-
-            alert.showAndWait().ifPresent(buttonType -> {
-                if (buttonType == buttonTypeExit) {
-                    alert.close();
-                    SceneHelper.closeWindow(movieTitleTextField);
-                }
-            });
-
+            if (SceneHelper.checkWithUser("Changes haven't been saved\nContinue?")) {
+                SceneHelper.closeWindow(movieGenreTextField);
+            }
         } else {
             SceneHelper.closeWindow(movieTitleTextField);
-        }    }
+        }
+    }
 }
